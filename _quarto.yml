@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "pred-ed"
+  sidebar:
+    title: "Christy Hsu"
+    footer: "2026-09-15"
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - section: My Projects
+        contents:
+        - href: "https://github.com/h-christy"
+          text: Github Portfolio
+        - href: ed-project.qmd
+          text: ED Project slides
+
+# format:
+#   html:
+#     theme: cosmo
+#     css: styles.css
+#     toc: true
+
+
+
+
+
+

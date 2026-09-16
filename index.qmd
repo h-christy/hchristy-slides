@@ -1,0 +1,17 @@
+---
+title: "Landing"
+# date: "2025-07-17"
+authors:
+  - name: Christy Hsu
+    affiliation: Georgetown University
+title-block-banner: '#E5E2D7'
+title-block-banner-color: "#697FEB"
+format:
+  html:
+    # df-print: kable
+    embed-resources: true
+    theme: default
+    css: styles.css
+bibliography: ref.bib
+---
+

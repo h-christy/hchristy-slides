@@ -1,0 +1,27 @@
+---
+title: "Predicting Emergency Department Disposition using Statistical Learning"
+subtitle: "2025 course project"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "ed-project.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "ed-project-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+bibliography: ref.bib
+---
+
+## 許多元作品集
+
+
+
