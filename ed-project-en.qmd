@@ -1,0 +1,272 @@
+---
+title: "Prediciting Emergency Department Disposition using Statistical Learning"
+subtitle: "Project Presentation"
+author: "許多元 （Christy Hsu）"
+format:
+  html:
+    output-file: "ed-project-en.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "ed-project-en-slides.html"
+    css: slides.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    center: false
+    width: 1080
+    height: 880
+    code:
+      echo: true
+      eval: true
+bibliography: ref.bib
+---
+
+
+## Data & Analytical Question
+
+::: {.columns}
+
+::: {.column width="58%"}
+
+#### Research question
+
+Can information recorded during an **emergency department visit** help
+distinguish different patient disposition outcomes?
+
+```{.r}
+
+        Patient     Triage      Clinical      Care       Hospital
+           │           │           │           │            │
+      demographics   acuity     vitals      meds /       hospital
+                     arrival    diagnosis   procedures    features
+
+```
+
+:::
+
+::: {.column width="42%"}
+
+#### 2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)
+
+From U.S. Centers for Disease Control and Prevention (CDC)
+
+![](data/img/dataset-dim.png)
+
+
+:::
+
+:::
+
+<div class="flow">
+
+<div class="flow-step">
+<strong>NHAMCS 2022</strong>
+<small>ED visit records</small>
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step">
+<strong>Candidate selection</strong>
+<small>188 variables<br>selected from codebook</small>
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step">
+<strong>Preprocessing</strong>
+<small>Missingness · encoding<br>imputation</small>
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step accent">
+<strong>Statistical learning</strong>
+<small>Lasso · SVM · RF · XGBoost</small>
+</div>
+
+</div>
+
+<div class="slide-footer-note">
+
+2025 Statistical Learning course project · 5-class multiclass classification
+
+</div>
+
+## Understanding the Outcome
+
+::: {.columns}
+
+::: {.column width="53%"}
+
+#### 16 non-mutually-exclusive indicators
+
+![](data/img/disposition-prevalence.png){width=100% fig-alt="Prevalence of the original NHAMCS emergency department disposition indicators"}
+
+:::
+
+::: {.column width="47%"}
+
+#### Overlap was structured
+
+![](data/img/disposition-combinations.png){width=100% fig-alt="Most frequent combinations of NHAMCS emergency department disposition indicators"}
+
+:::
+
+:::
+
+<div class="flow">
+
+<div class="flow-step">
+
+<strong>16 binary indicators</strong>
+
+<small>Yes / No<br>Non-mutually-exclusive</small>
+
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step">
+
+<strong>Resolve overlaps</strong>
+
+<small>Predefined priority rule<br>select one disposition</small>
+
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step">
+
+<strong>Restrict analytic scope</strong>
+
+<small>Exclude death / DOA, other,<br>no answer, and follow-up</small>
+
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step accent">
+
+<strong>11 labels → 5 classes</strong>
+
+<small>6,757 visits<br>mutually exclusive target</small>
+
+</div>
+
+</div>
+
+<div class="method-note">
+
+<strong>Modeling decision:</strong> This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy.
+
+</div>
+
+
+## Model Performance & Error Analysis
+
+::: {.columns}
+
+::: {.column width="43%"}
+
+### Comparing four model families
+
+![](data/img/model-comparison.png){width=100%}
+
+**XGBoost** achieved the highest accuracy and F1, while **SVM** had the highest reported AUC.
+
+:::
+
+::: {.column width="57%"}
+
+### Random Forest: where did errors occur?
+
+![](data/img/rf-confusion-normalized.png){width=100%}
+
+**Transfer** was frequently classified as admit; **left early** was also harder to distinguish than admit or returned.
+
+
+:::
+
+:::
+
+**Takeaway:** Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished.
+
+
+## What Did the Model Learn?
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+### Random Forest feature importance
+
+![](data/img/rf-feature-importance.png)
+
+<div class="model-summary">
+
+**Length of visit and medication utilization were among the strongest
+predictors**, alongside vital signs, procedures, and hospital characteristics.
+
+</div>
+
+:::
+
+::: {.column width="45%"}
+
+### From course project to healthcare research
+
+<div class="reflection-item">
+
+<span class="reflection-number">01</span>
+
+<div>
+<strong>Prediction timing matters</strong>
+
+Some highly ranked variables—such as length of visit and medications—accumulate
+during the ED visit and may not be available at initial triage.
+</div>
+
+</div>
+
+<div class="reflection-item">
+
+<span class="reflection-number">02</span>
+
+<div>
+<strong>Outcome definition matters</strong>
+
+Raw NHAMCS disposition indicators overlap and can represent different parts
+of the patient's care trajectory.
+</div>
+
+</div>
+
+<div class="reflection-item">
+
+<span class="reflection-number">03</span>
+
+<div>
+<strong>How I would extend the study</strong>
+
+Define the prediction time point and outcome with clinical collaborators,
+then restrict predictors accordingly and evaluate calibration and uncertainty.
+</div>
+
+</div>
+
+:::
+
+:::
+
+<div class="takeaway">
+
+**Reflection:** The project is best interpreted as retrospective classification
+of observed ED outcomes—not evidence of triage-time predictive performance.
+
+</div>
+
+

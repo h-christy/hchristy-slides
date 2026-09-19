@@ -5,5 +5,527 @@
     "title": "Predicting Emergency Department Disposition using Statistical Learning",
     "section": "許多元作品集",
     "text": "許多元作品集"
+  },
+  {
+    "objectID": "presentation.html",
+    "href": "presentation.html",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "",
+    "text": "Retrospective, exploratory modeling of public U.S. emergency-department survey data.\nA course project demonstrating a statistical-learning workflow, not a clinical decision rule.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#project-question-and-course-scope",
+    "href": "presentation.html#project-question-and-course-scope",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Project question and course scope",
+    "text": "Project question and course scope\n\n\n\nQuestion\nCan structured ED encounter data distinguish several clinically and operationally meaningful disposition-related outcomes?\n\n2022 NHAMCS Emergency Department public-use data: 16,025 visits and a high-dimensional feature space.\nSemester-long Statistical Learning final project; emphasis was on methods taught in the course rather than deep learning.\nCompared regularized regression, kernel learning, bagging, and boosting while emphasizing cross-validation and interpretation.\nWe deliberately simplified a complex set of non-mutually-exclusive disposition indicators into a tractable multiclass learning task.\n\n\n\n\n\n\n\n\n\nFinal modeling outcome\n\n\n\nAdmit — 2,302\nReturned — 2,053\nDischarge — 1,202\nLeft early — 748\nTransfer — 452\n\n\n6,757 visits across five mutually exclusive modeled classes.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#before-modeling-understand-how-the-outcome-is-recorded",
+    "href": "presentation.html#before-modeling-understand-how-the-outcome-is-recorded",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Before modeling: understand how the outcome is recorded",
+    "text": "Before modeling: understand how the outcome is recorded\n\n\n\nMarginal frequency of raw disposition indicators\n\n\nRETREFFU10,824 · 67.5%\n\n\nADMITHOS2,121 · 13.2%\n\n\nRETRNED2,062 · 12.9%\n\n\nNOFU1,202 · 7.5%\n\n\nLWBS327 · 2.0%\n\n\nOTHDISP310 · 1.9%\n\n\nLEFTAMA228 · 1.4%\n\n\nLBTC221 · 1.4%\n\n\n\n\n\nFirst analytical observation\nThe 16 Yes/No fields should not automatically be treated as 16 equivalent competing classes.\nRETREFFU alone is marked Yes for 67.5% of visits, suggesting that follow-up information often coexists with a more specific disposition or care-trajectory indicator.\nThis motivated examining within-visit overlap before defining the modeling target.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#outcome-eda-overlap-is-structured-not-random",
+    "href": "presentation.html#outcome-eda-overlap-is-structured-not-random",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Outcome EDA: overlap is structured, not random",
+    "text": "Outcome EDA: overlap is structured, not random\n\n\n\nMost common co-occurrences\n\n\n\nCombination\nVisits\n\n\n\n\nRETREFFU + RETRNED\n1,693\n\n\nADMITHOS + OBSHOS\n147\n\n\nADMITHOS + RETREFFU\n72\n\n\nOBSDIS + RETREFFU\n54\n\n\nOTHDISP + RETREFFU\n40\n\n\nLBTC + LEFTAMA\n19\n\n\n\n\n\n\nWhat this tells us\n\nRETRNED + RETREFFU: a specific return outcome can coexist with follow-up information.\nADMITHOS + OBSHOS: some indicators describe related or sequential stages of care.\nLBTC + LEFTAMA: multiple original indicators can ultimately represent the same conceptual outcome group.\n\n\n\n\n\n\n\nImplication for target design\n\n\n\nThe raw fields mix destination, care trajectory, and follow-up information. Defining the response variable was therefore an analytical step, not just a recoding step.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#outcome-operationalization-from-16-indicators-to-5-classes",
+    "href": "presentation.html#outcome-operationalization-from-16-indicators-to-5-classes",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Outcome operationalization: from 16 indicators to 5 classes",
+    "text": "Outcome operationalization: from 16 indicators to 5 classes\n\n\n16 binary indicators Yes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps Apply predefined priority ruleto select one disposition\n\n\n→\n\n\nRestrict analytic scope Exclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes Mutually exclusivemodeling target\n\n\n\n\n\n\n\nFinal class\nOriginal labels retained\n\n\n\n\nTransfer\nTRANNH, TRANOTH, TRANPSYC\n\n\nAdmit\nADMITHOS, OBSHOS, OBSDIS\n\n\nReturned\nRETRNED\n\n\nDischarge\nNOFU\n\n\nLeft early\nLBTC, LEFTAMA, LWBS\n\n\n\n\n\n\n\n\n\n\nWhy simplify?\n\n\n\nFor a semester Statistical Learning project, we operationalized a single outcome so that model comparison, cross-validation, and class-specific interpretation remained tractable and clear.\n\n\nThis priority hierarchy was an analytical choice, not a clinically validated disposition standard.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#from-survey-data-to-a-modeling-matrix",
+    "href": "presentation.html#from-survey-data-to-a-modeling-matrix",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "From survey data to a modeling matrix",
+    "text": "From survey data to a modeling matrix\n\n\nNHAMCS 2022\n16,025 ED visits913 variables\n\n\n→\n\n\nCandidate selection\n188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing\nMissingness · encodingimputation\n\n\n→\n\n\nModeling\n5-class outcomestratified CV\n\n\n\n\n\nFeature domains\nDemographics, triage, injury, hospital utilization/characteristics, chief complaint, diagnosis, procedures, chronic disease, vital signs, and medications.\n\n\n\nWhat I would tighten today\nFit imputation, encoding, rare-level handling, and any feature selection inside training folds; document the target hierarchy and analytic cohort as part of the reproducible pipeline.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#model-comparison-performance-vs.-interpretability",
+    "href": "presentation.html#model-comparison-performance-vs.-interpretability",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Model comparison: performance vs. interpretability",
+    "text": "Model comparison: performance vs. interpretability\n\n\n\nModel\nAccuracy\nPrecision\nRecall\nF1\nAUC\n\n\n\n\nLasso multinomial LR\n0.724\n0.681\n0.604\n0.622\n0.873\n\n\nRBF SVM\n0.509\n0.599\n0.576\n0.523\n0.898\n\n\nRandom Forest\n0.715\n0.652\n0.596\n0.609\n0.893\n\n\nXGBoost\n0.738\n0.679\n0.618\n0.636\n0.893\n\n\n\n\n\n73.8%best test accuracyXGBoost\n\n\n0.636best reported F1XGBoost\n\n\n0.898highest reported AUCSVM\n\n\n\nReported values from the 2025 project. The report does not fully specify the multiclass averaging convention for precision/recall/F1/AUC; a revised analysis should define this explicitly and add class-specific metrics.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#where-did-the-models-succeed-and-struggle",
+    "href": "presentation.html#where-did-the-models-succeed-and-struggle",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Where did the models succeed and struggle?",
+    "text": "Where did the models succeed and struggle?\n\n\n\n\nRandom Forest confusion matrix reproduced from the original portfolio deck.\n\n\n\nAdmit and Returned, the two largest modeled classes, were comparatively well identified.\nTransfer was often confused with Admit, consistent with both involving continued care while differing in destination and resource context.\nDischarge and Returned were also confused, highlighting the difficulty of distinguishing a later return from a visit ending in discharge using encounter-level features alone.\nThe error structure is as informative as overall accuracy when thinking about what context may be missing.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#interpretability-useful-patterns-careful-language",
+    "href": "presentation.html#interpretability-useful-patterns-careful-language",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Interpretability: useful patterns, careful language",
+    "text": "Interpretability: useful patterns, careful language\n\n\n\n\n\nFeature importance highlighted length of visit, medication counts, vital signs, and procedures.\nPartial dependence plots were used to inspect nonlinear model associations for length of visit and pulse across classes.\nLasso multinomial regression supplied class-specific sparse coefficients as a complementary, more transparent view.\nThese are predictive associations, not causal effects or clinical thresholds.\nSome high-importance variables occur after substantial care has happened, so usefulness depends on the intended prediction time.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#what-i-would-improve-for-a-clinical-research-setting",
+    "href": "presentation.html#what-i-would-improve-for-a-clinical-research-setting",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "What I would improve for a clinical research setting",
+    "text": "What I would improve for a clinical research setting\n\n\n\n\n\n\n\n\nQuestion / outcome design\n\n\n\n\nDefine the intended prediction time and clinical/operational use case first.\nRevisit the five-class outcome and priority hierarchy with ED clinicians.\nConsider whether some original indicators should be separate endpoints or sequential outcomes instead of forcing one label.\nRespect NHAMCS survey design for population-level inference.\n\n\n\n\n\n\n\n\n\n\nModeling / evaluation\n\n\n\n\nUse fold-contained preprocessing and nested tuning.\nRemove downstream variables unavailable at the chosen prediction time.\nReport per-class sensitivity/PPV, macro-F1, calibration, and uncertainty intervals.\nCompare with simple baselines and validate externally before deployment claims.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation.html#takeaway",
+    "href": "presentation.html#takeaway",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Takeaway",
+    "text": "Takeaway\n\nA course project that taught me both how to build models and how much the definition of the clinical question matters.\n\n\n\n\n\nStatistical learning\nRegularization, SVM, Random Forest, XGBoost, cross-validation, and tuning.\n\n\n\nData reasoning\nInterrogate a messy outcome, operationalize the target, inspect errors, and interpret predictor patterns.\n\n\n\nNext step\nRefine outcome and prediction timing with practitioners, then redesign validation around the clinical workflow.\n\n\n\n\nSource: 2022 National Hospital Ambulatory Medical Care Survey (NHAMCS) ED public-use data. Original work: 2025 Statistical Learning final project.",
+    "crumbs": [
+      "My Projects",
+      "Presentation"
+    ]
+  },
+  {
+    "objectID": "presentation-slides.html#project-question-and-course-scope",
+    "href": "presentation-slides.html#project-question-and-course-scope",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Project question and course scope",
+    "text": "Project question and course scope\n\n\nQuestion\nCan structured ED encounter data distinguish several clinically and operationally meaningful disposition-related outcomes?\n\n2022 NHAMCS Emergency Department public-use data: 16,025 visits and a high-dimensional feature space.\nSemester-long Statistical Learning final project; emphasis was on methods taught in the course rather than deep learning.\nCompared regularized regression, kernel learning, bagging, and boosting while emphasizing cross-validation and interpretation.\nWe deliberately simplified a complex set of non-mutually-exclusive disposition indicators into a tractable multiclass learning task.\n\n\n\n\n\n\n\n\n\nFinal modeling outcome\n\n\nAdmit — 2,302\nReturned — 2,053\nDischarge — 1,202\nLeft early — 748\nTransfer — 452\n\n\n\n\n6,757 visits across five mutually exclusive modeled classes."
+  },
+  {
+    "objectID": "presentation-slides.html#before-modeling-understand-how-the-outcome-is-recorded",
+    "href": "presentation-slides.html#before-modeling-understand-how-the-outcome-is-recorded",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Before modeling: understand how the outcome is recorded",
+    "text": "Before modeling: understand how the outcome is recorded\n\n\nMarginal frequency of raw disposition indicators\n\n\nRETREFFU10,824 · 67.5%\n\n\nADMITHOS2,121 · 13.2%\n\n\nRETRNED2,062 · 12.9%\n\n\nNOFU1,202 · 7.5%\n\n\nLWBS327 · 2.0%\n\n\nOTHDISP310 · 1.9%\n\n\nLEFTAMA228 · 1.4%\n\n\nLBTC221 · 1.4%\n\n\n\nFirst analytical observation\nThe 16 Yes/No fields should not automatically be treated as 16 equivalent competing classes.\nRETREFFU alone is marked Yes for 67.5% of visits, suggesting that follow-up information often coexists with a more specific disposition or care-trajectory indicator.\nThis motivated examining within-visit overlap before defining the modeling target."
+  },
+  {
+    "objectID": "presentation-slides.html#outcome-eda-overlap-is-structured-not-random",
+    "href": "presentation-slides.html#outcome-eda-overlap-is-structured-not-random",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Outcome EDA: overlap is structured, not random",
+    "text": "Outcome EDA: overlap is structured, not random\n\n\nMost common co-occurrences\n\n\n\nCombination\nVisits\n\n\n\n\nRETREFFU + RETRNED\n1,693\n\n\nADMITHOS + OBSHOS\n147\n\n\nADMITHOS + RETREFFU\n72\n\n\nOBSDIS + RETREFFU\n54\n\n\nOTHDISP + RETREFFU\n40\n\n\nLBTC + LEFTAMA\n19\n\n\n\n\nWhat this tells us\n\nRETRNED + RETREFFU: a specific return outcome can coexist with follow-up information.\nADMITHOS + OBSHOS: some indicators describe related or sequential stages of care.\nLBTC + LEFTAMA: multiple original indicators can ultimately represent the same conceptual outcome group.\n\n\n\n\n\n\n\n\nImplication for target design\n\n\nThe raw fields mix destination, care trajectory, and follow-up information. Defining the response variable was therefore an analytical step, not just a recoding step."
+  },
+  {
+    "objectID": "presentation-slides.html#outcome-operationalization-from-16-indicators-to-5-classes",
+    "href": "presentation-slides.html#outcome-operationalization-from-16-indicators-to-5-classes",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Outcome operationalization: from 16 indicators to 5 classes",
+    "text": "Outcome operationalization: from 16 indicators to 5 classes\n\n\n16 binary indicators Yes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps Apply predefined priority ruleto select one disposition\n\n\n→\n\n\nRestrict analytic scope Exclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes Mutually exclusivemodeling target\n\n\n\n\n\n\n\nFinal class\nOriginal labels retained\n\n\n\n\nTransfer\nTRANNH, TRANOTH, TRANPSYC\n\n\nAdmit\nADMITHOS, OBSHOS, OBSDIS\n\n\nReturned\nRETRNED\n\n\nDischarge\nNOFU\n\n\nLeft early\nLBTC, LEFTAMA, LWBS\n\n\n\n\n\n\n\n\n\n\n\nWhy simplify?\n\n\nFor a semester Statistical Learning project, we operationalized a single outcome so that model comparison, cross-validation, and class-specific interpretation remained tractable and clear.\n\n\n\n\nThis priority hierarchy was an analytical choice, not a clinically validated disposition standard."
+  },
+  {
+    "objectID": "presentation-slides.html#from-survey-data-to-a-modeling-matrix",
+    "href": "presentation-slides.html#from-survey-data-to-a-modeling-matrix",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "From survey data to a modeling matrix",
+    "text": "From survey data to a modeling matrix\n\n\nNHAMCS 2022\n16,025 ED visits913 variables\n\n\n→\n\n\nCandidate selection\n188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing\nMissingness · encodingimputation\n\n\n→\n\n\nModeling\n5-class outcomestratified CV\n\n\n\n\nFeature domains\nDemographics, triage, injury, hospital utilization/characteristics, chief complaint, diagnosis, procedures, chronic disease, vital signs, and medications.\n\nWhat I would tighten today\nFit imputation, encoding, rare-level handling, and any feature selection inside training folds; document the target hierarchy and analytic cohort as part of the reproducible pipeline."
+  },
+  {
+    "objectID": "presentation-slides.html#model-comparison-performance-vs.-interpretability",
+    "href": "presentation-slides.html#model-comparison-performance-vs.-interpretability",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Model comparison: performance vs. interpretability",
+    "text": "Model comparison: performance vs. interpretability\n\n\n\nModel\nAccuracy\nPrecision\nRecall\nF1\nAUC\n\n\n\n\nLasso multinomial LR\n0.724\n0.681\n0.604\n0.622\n0.873\n\n\nRBF SVM\n0.509\n0.599\n0.576\n0.523\n0.898\n\n\nRandom Forest\n0.715\n0.652\n0.596\n0.609\n0.893\n\n\nXGBoost\n0.738\n0.679\n0.618\n0.636\n0.893\n\n\n\n\n\n73.8%best test accuracyXGBoost\n\n\n0.636best reported F1XGBoost\n\n\n0.898highest reported AUCSVM\n\n\n\nReported values from the 2025 project. The report does not fully specify the multiclass averaging convention for precision/recall/F1/AUC; a revised analysis should define this explicitly and add class-specific metrics."
+  },
+  {
+    "objectID": "presentation-slides.html#where-did-the-models-succeed-and-struggle",
+    "href": "presentation-slides.html#where-did-the-models-succeed-and-struggle",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Where did the models succeed and struggle?",
+    "text": "Where did the models succeed and struggle?\n\n\n\n\nRandom Forest confusion matrix reproduced from the original portfolio deck.\n\n\n\nAdmit and Returned, the two largest modeled classes, were comparatively well identified.\nTransfer was often confused with Admit, consistent with both involving continued care while differing in destination and resource context.\nDischarge and Returned were also confused, highlighting the difficulty of distinguishing a later return from a visit ending in discharge using encounter-level features alone.\nThe error structure is as informative as overall accuracy when thinking about what context may be missing."
+  },
+  {
+    "objectID": "presentation-slides.html#interpretability-useful-patterns-careful-language",
+    "href": "presentation-slides.html#interpretability-useful-patterns-careful-language",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Interpretability: useful patterns, careful language",
+    "text": "Interpretability: useful patterns, careful language\n\n\n\n\n\nFeature importance highlighted length of visit, medication counts, vital signs, and procedures.\nPartial dependence plots were used to inspect nonlinear model associations for length of visit and pulse across classes.\nLasso multinomial regression supplied class-specific sparse coefficients as a complementary, more transparent view.\nThese are predictive associations, not causal effects or clinical thresholds.\nSome high-importance variables occur after substantial care has happened, so usefulness depends on the intended prediction time."
+  },
+  {
+    "objectID": "presentation-slides.html#what-i-would-improve-for-a-clinical-research-setting",
+    "href": "presentation-slides.html#what-i-would-improve-for-a-clinical-research-setting",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "What I would improve for a clinical research setting",
+    "text": "What I would improve for a clinical research setting\n\n\n\n\n\n\n\n\n\nQuestion / outcome design\n\n\n\nDefine the intended prediction time and clinical/operational use case first.\nRevisit the five-class outcome and priority hierarchy with ED clinicians.\nConsider whether some original indicators should be separate endpoints or sequential outcomes instead of forcing one label.\nRespect NHAMCS survey design for population-level inference.\n\n\n\n\n\n\n\n\n\n\n\n\n\nModeling / evaluation\n\n\n\nUse fold-contained preprocessing and nested tuning.\nRemove downstream variables unavailable at the chosen prediction time.\nReport per-class sensitivity/PPV, macro-F1, calibration, and uncertainty intervals.\nCompare with simple baselines and validate externally before deployment claims."
+  },
+  {
+    "objectID": "presentation-slides.html#takeaway",
+    "href": "presentation-slides.html#takeaway",
+    "title": "Predicting Emergency Department Disposition with Statistical Learning",
+    "section": "Takeaway",
+    "text": "Takeaway\n\nA course project that taught me both how to build models and how much the definition of the clinical question matters.\n\n\n\n\nStatistical learning\nRegularization, SVM, Random Forest, XGBoost, cross-validation, and tuning.\n\nData reasoning\nInterrogate a messy outcome, operationalize the target, inspect errors, and interpret predictor patterns.\n\nNext step\nRefine outcome and prediction timing with practitioners, then redesign validation around the clinical workflow.\n\n\nSource: 2022 National Hospital Ambulatory Medical Care Survey (NHAMCS) ED public-use data. Original work: 2025 Statistical Learning final project."
+  },
+  {
+    "objectID": "ed-project-en.html#prediciting-emergency-department-disposition-using-statistical-learning",
+    "href": "ed-project-en.html#prediciting-emergency-department-disposition-using-statistical-learning",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "text": "Prediciting Emergency Department Disposition using Statistical Learning\n\n2025 Team project (Christy Hsu | Wendy Hu) for Statistical Learning",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en.html#data-analytical-question",
+    "href": "ed-project-en.html#data-analytical-question",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "",
+    "text": "Can information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n\nFrom U.S. Centers for Disease Control and Prevention (CDC)\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en.html#understanding-the-outcome",
+    "href": "ed-project-en.html#understanding-the-outcome",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Understanding the Outcome",
+    "text": "Understanding the Outcome\n\n\n\n16 non-mutually-exclusive indicators\n\n\n\n\nOverlap was structured\n\n\n\n\n\n\n16 binary indicators\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy.",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en.html#slide-3",
+    "href": "ed-project-en.html#slide-3",
+    "title": "Christy Hsu",
+    "section": "Slide 3",
+    "text": "Slide 3",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en.html#slide-4",
+    "href": "ed-project-en.html#slide-4",
+    "title": "Christy Hsu",
+    "section": "Slide 4",
+    "text": "Slide 4",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en-slides.html#projects",
+    "href": "ed-project-en-slides.html#projects",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Projects",
+    "text": "Projects"
+  },
+  {
+    "objectID": "ed-project-en-slides.html#prediciting-emergency-department-disposition-using-statistical-learning",
+    "href": "ed-project-en-slides.html#prediciting-emergency-department-disposition-using-statistical-learning",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "text": "Prediciting Emergency Department Disposition using Statistical Learning\n\n2025 Team project (Christy Hsu | Wendy Hu) for Statistical Learning"
+  },
+  {
+    "objectID": "ed-project-en-slides.html#data-analytical-question",
+    "href": "ed-project-en-slides.html#data-analytical-question",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Data & Analytical Question",
+    "text": "Data & Analytical Question\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)\nFrom U.S. Centers for Disease Control and Prevention (CDC)\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification"
+  },
+  {
+    "objectID": "ed-project-en-slides.html#understanding-the-outcome",
+    "href": "ed-project-en-slides.html#understanding-the-outcome",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Understanding the Outcome",
+    "text": "Understanding the Outcome\n\n\n16 non-mutually-exclusive indicators\n\n\nOverlap was structured\n\n\n\n\n16 binary indicators\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy."
+  },
+  {
+    "objectID": "ed-project-en-slides.html#slide-3",
+    "href": "ed-project-en-slides.html#slide-3",
+    "title": "Christy Hsu",
+    "section": "Slide 3",
+    "text": "Slide 3"
+  },
+  {
+    "objectID": "ed-project-en-slides.html#slide-4",
+    "href": "ed-project-en-slides.html#slide-4",
+    "title": "Christy Hsu",
+    "section": "Slide 4",
+    "text": "Slide 4"
+  },
+  {
+    "objectID": "ed-project-en.html#can-ed-visit-data-distinguish-patient-disposition-outcomes-1",
+    "href": "ed-project-en.html#can-ed-visit-data-distinguish-patient-disposition-outcomes-1",
+    "title": "Christy Hsu",
+    "section": "Can ED Visit Data Distinguish Patient Disposition Outcomes?",
+    "text": "Can ED Visit Data Distinguish Patient Disposition Outcomes?\n\nResearch question                         DATA\nCan information recorded during           NHAMCS 2022\nan ED visit help distinguish               16,025 ED visits\ndifferent disposition outcomes?            913 original variables\n\n                                          ANALYTIC SAMPLE\n                                          6,757 visits\n                                          5 disposition classes\n\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n\n\n2022 NHAMCS ED\n\n\n16,025 ED visits\n\n\n913 original variables\n\n\n6,757 analytic visits\n\n\n5 disposition classes\n\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en-slides.html#can-ed-visit-data-distinguish-patient-disposition-outcomes-1",
+    "href": "ed-project-en-slides.html#can-ed-visit-data-distinguish-patient-disposition-outcomes-1",
+    "title": "Christy Hsu",
+    "section": "Can ED Visit Data Distinguish Patient Disposition Outcomes?",
+    "text": "Can ED Visit Data Distinguish Patient Disposition Outcomes?\n\nResearch question                         DATA\nCan information recorded during           NHAMCS 2022\nan ED visit help distinguish               16,025 ED visits\ndifferent disposition outcomes?            913 original variables\n\n                                          ANALYTIC SAMPLE\n                                          6,757 visits\n                                          5 disposition classes\n\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n2022 NHAMCS ED\n\n\n16,025 ED visits\n\n\n913 original variables\n\n\n6,757 analytic visits\n\n\n5 disposition classes\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification"
+  },
+  {
+    "objectID": "ed-project-en.html#model-performance-error-analysis",
+    "href": "ed-project-en.html#model-performance-error-analysis",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Model Performance & Error Analysis",
+    "text": "Model Performance & Error Analysis\n\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\n\n\nRandom Forest: where did errors occur?\n\nTransfer was frequently classified as admit; left early was also harder to distinguish than admit or returned.\n\n\n\nTakeaway: Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished.",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en.html#what-did-the-model-learn",
+    "href": "ed-project-en.html#what-did-the-model-learn",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance.",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en-slides.html#model-performance-error-analysis",
+    "href": "ed-project-en-slides.html#model-performance-error-analysis",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "Model Performance & Error Analysis",
+    "text": "Model Performance & Error Analysis\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\nRandom Forest: where did errors occur?\n\nTransfer was frequently classified as admit; left early was also harder to distinguish than admit or returned.\n\nTakeaway: Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished."
+  },
+  {
+    "objectID": "ed-project-en-slides.html#what-did-the-model-learn",
+    "href": "ed-project-en-slides.html#what-did-the-model-learn",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance."
+  },
+  {
+    "objectID": "ed-project-en.html#model-performance-error-analysis-1",
+    "href": "ed-project-en.html#model-performance-error-analysis-1",
+    "title": "Christy Hsu",
+    "section": "Model Performance & Error Analysis",
+    "text": "Model Performance & Error Analysis\n\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\n\n\nRandom Forest: where did errors occur?\n\nTransfer was frequently classified as admit; left early was also harder to distinguish than admit or returned.\n\n\n\nTakeaway: Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished.",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en.html#what-did-the-model-learn-1",
+    "href": "ed-project-en.html#what-did-the-model-learn-1",
+    "title": "Christy Hsu",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance.",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en-slides.html#model-performance-error-analysis-1",
+    "href": "ed-project-en-slides.html#model-performance-error-analysis-1",
+    "title": "Christy Hsu",
+    "section": "Model Performance & Error Analysis",
+    "text": "Model Performance & Error Analysis\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\nRandom Forest: where did errors occur?\n\nTransfer was frequently classified as admit; left early was also harder to distinguish than admit or returned.\n\nTakeaway: Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished."
+  },
+  {
+    "objectID": "ed-project-en-slides.html#what-did-the-model-learn-1",
+    "href": "ed-project-en-slides.html#what-did-the-model-learn-1",
+    "title": "Christy Hsu",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance."
+  },
+  {
+    "objectID": "ed-project-en.html",
+    "href": "ed-project-en.html",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "",
+    "text": "Can information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n\nFrom U.S. Centers for Disease Control and Prevention (CDC)\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "cloud-page.html",
+    "href": "cloud-page.html",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "Data\n\n\n\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n612 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. Core idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-page.html#research-question-data",
+    "href": "cloud-page.html#research-question-data",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "Data\n\n\n\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n612 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. Core idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-slides.html#research-question-data",
+    "href": "cloud-slides.html#research-question-data",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Research Question & Data",
+    "text": "Research Question & Data\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\n\n\n\n\n\n\n\n\nData\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n612 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. Core idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data."
+  },
+  {
+    "objectID": "cloud-page.html#from-online-communities-to-relationships-between-places",
+    "href": "cloud-page.html#from-online-communities-to-relationships-between-places",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Online Communities to Relationships Between Places",
+    "text": "From Online Communities to Relationships Between Places\nLocation-based subreddits are online communities organized around physical places. But the same users often participate in multiple local communities, creating connections between places through shared online activity.\n\n\nReddit Users Participate across multiple local communities\n\n\n→\n\n\nShared Participation Connect pairs of location-based subreddits\n\n\n→\n\n\nPlace Connectedness Measure pairwise relationships\n\n\n→\n\n\nGeographic Structure? Distance, borders, and regions\n\n\n\n\n\nResearch Question\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\nDoes connectedness decline with geographic distance?\nDoes being in the same state matter beyond distance?\nCan connectedness alone recover recognizable geographic regions?\n\n\n\n\nResearch Inspiration\nBailey et al. (2018) used Facebook friendship networks to measure social connectedness between places, relating it to geographic distance and political boundaries (Bailey et al. 2018).\nTheir connectedness-based clustering further demonstrated how network relationships can reveal geographic regions.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-slides.html#from-online-communities-to-relationships-between-places",
+    "href": "cloud-slides.html#from-online-communities-to-relationships-between-places",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Online Communities to Relationships Between Places",
+    "text": "From Online Communities to Relationships Between Places\nLocation-based subreddits are online communities organized around physical places. But the same users often participate in multiple local communities, creating connections between places through shared online activity.\n\n\nReddit Users Participate across multiple local communities\n\n\n→\n\n\nShared Participation Connect pairs of location-based subreddits\n\n\n→\n\n\nPlace Connectedness Measure pairwise relationships\n\n\n→\n\n\nGeographic Structure? Distance, borders, and regions\n\n\n\n\nResearch Question\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\nDoes connectedness decline with geographic distance?\nDoes being in the same state matter beyond distance?\nCan connectedness alone recover recognizable geographic regions?\n\n\nResearch Inspiration\nBailey et al. (2018) used Facebook friendship networks to measure social connectedness between places, relating it to geographic distance and political boundaries (Bailey et al. 2018).\nTheir connectedness-based clustering further demonstrated how network relationships can reveal geographic regions."
+  },
+  {
+    "objectID": "cloud-slides.html#section",
+    "href": "cloud-slides.html#section",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "Bailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259."
+  },
+  {
+    "objectID": "cloud-page.html#from-reddit-activity-to-place-connectedness",
+    "href": "cloud-page.html#from-reddit-activity-to-place-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Reddit Activity to Place Connectedness",
+    "text": "From Reddit Activity to Place Connectedness\n\n\n\nData\n64.7 million posts and comments\n4.1 million unique contributors\n619 U.S. location-based subreddits\nJune 2023 – July 2024\nSubreddits represent different geographic scales, including states, cities, metropolitan areas, and other local communities.\n\nRaw Reddit data were processed with PySpark on AWS and combined with geographic information for each community.\n\n\n\n\nMeasuring Shared Participation\nFor each pair of subreddits (i) and (j):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere (A_i) and (A_j) are their sets of contributing authors.\nn_shared_authors therefore measures how many users participated in both communities.\nBecause larger subreddits have more opportunities to share users, I also constructed a size-adjusted measure:\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\nUnit of analysis: a pair of location-based subreddits.\nThis pairwise representation allows connectedness to be compared with geographic distance and administrative boundaries, or treated as a weighted network of places.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-slides.html#from-reddit-activity-to-place-connectedness",
+    "href": "cloud-slides.html#from-reddit-activity-to-place-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Reddit Activity to Place Connectedness",
+    "text": "From Reddit Activity to Place Connectedness\n\n\nData\n64.7 million posts and comments\n4.1 million unique contributors\n619 U.S. location-based subreddits\nJune 2023 – July 2024\nSubreddits represent different geographic scales, including states, cities, metropolitan areas, and other local communities.\n\nRaw Reddit data were processed with PySpark on AWS and combined with geographic information for each community.\n\n\nMeasuring Shared Participation\nFor each pair of subreddits (i) and (j):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere (A_i) and (A_j) are their sets of contributing authors.\nn_shared_authors therefore measures how many users participated in both communities.\nBecause larger subreddits have more opportunities to share users, I also constructed a size-adjusted measure:\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\nUnit of analysis: a pair of location-based subreddits.\nThis pairwise representation allows connectedness to be compared with geographic distance and administrative boundaries, or treated as a weighted network of places."
+  },
+  {
+    "objectID": "cloud-slides.html#slide-3",
+    "href": "cloud-slides.html#slide-3",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "slide 3",
+    "text": "slide 3\n\n\n\n\nBailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259."
+  },
+  {
+    "objectID": "cloud-page.html#geography-strongly-predicts-online-connectedness",
+    "href": "cloud-page.html#geography-strongly-predicts-online-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Geography Strongly Predicts Online Connectedness",
+    "text": "Geography Strongly Predicts Online Connectedness\n\nPairwise Regression\nI modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.\n\\[\n\\log(N_{ij} + 0.5)\n=\n\\beta_1 \\log(D_{ij})\n+\n\\beta_2 \\text{SameState}_{ij}\n+\n\\alpha_i + \\alpha_j\n+\n\\epsilon_{ij}\n\\]\n\n\n\n\nFixed-Effects Results\n\n\n\n\nModel\nDistance\nSame State\nAdj. \\(R^2\\)\n\n\n\n\nAll pairs\n−0.458*\n+1.087*\n0.791\n\n\n≤ 200 miles\n−0.871*\n+1.187*\n0.888\n\n\n&gt; 200 miles\n−0.398*\n+0.730*\n0.786\n\n\n\n\n\n*** \\(p &lt; .001\\). Subreddit fixed effects included in all models.\n\n\n\n\nWhat Do We Learn?\nConnectedness decreases with distance\nPlaces farther apart tend to share fewer Reddit contributors.\nThe relationship is strongest locally\nThe distance coefficient is substantially larger within 200 miles than beyond 200 miles.\nState borders also matter\nCommunities within the same state share more contributors even after accounting for distance and subreddit fixed effects.\n\n\n\n\nGeographic distance and state boundaries are both strongly associated with patterns of shared online participation.\n\n\nModeling strategy adapted from the geographic connectedness framework of Bailey et al. (2018) (Bailey et al. 2018).",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-slides.html#geography-strongly-predicts-online-connectedness",
+    "href": "cloud-slides.html#geography-strongly-predicts-online-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Geography Strongly Predicts Online Connectedness",
+    "text": "Geography Strongly Predicts Online Connectedness\nPairwise Regression\nI modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.\n\\[\n\\log(N_{ij} + 0.5)\n=\n\\beta_1 \\log(D_{ij})\n+\n\\beta_2 \\text{SameState}_{ij}\n+\n\\alpha_i + \\alpha_j\n+\n\\epsilon_{ij}\n\\]\n\n\nFixed-Effects Results\n\n\n\n\nModel\nDistance\nSame State\nAdj. \\(R^2\\)\n\n\n\n\nAll pairs\n−0.458*\n+1.087*\n0.791\n\n\n≤ 200 miles\n−0.871*\n+1.187*\n0.888\n\n\n&gt; 200 miles\n−0.398*\n+0.730*\n0.786\n\n\n\n\n\n*** \\(p &lt; .001\\). Subreddit fixed effects included in all models.\n\n\nWhat Do We Learn?\nConnectedness decreases with distance\nPlaces farther apart tend to share fewer Reddit contributors.\nThe relationship is strongest locally\nThe distance coefficient is substantially larger within 200 miles than beyond 200 miles.\nState borders also matter\nCommunities within the same state share more contributors even after accounting for distance and subreddit fixed effects.\n\n\nGeographic distance and state boundaries are both strongly associated with patterns of shared online participation.\n\n\nModeling strategy adapted from the geographic connectedness framework of Bailey et al. (2018) (Bailey et al. 2018)."
+  },
+  {
+    "objectID": "cloud-page.html#can-connectedness-reconstruct-geographic-regions",
+    "href": "cloud-page.html#can-connectedness-reconstruct-geographic-regions",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Can Connectedness Reconstruct Geographic Regions?",
+    "text": "Can Connectedness Reconstruct Geographic Regions?\nInstead of using geography to explain connectedness, I used the network of shared Reddit participation itself to identify groups of places with similar connections.\n\n\nPCI Network Size-adjusted shared-author connections\n\n\n→\n\n\nNode2Vec Learn a network embedding for each state\n\n\n→\n\n\nHierarchical Clustering Complete linkage on state embeddings\n\n\n→\n\n\nGeographic Regions Compare clusters with the U.S. map\n\n\n\n\n\n\n\nWhat Emerges?\nBroad geographic structure appears without using geographic distance in clustering.\nAt lower values of \\(k\\), the network produces broad regional divisions, including a recognizable East–West structure.\nAs the hierarchy is divided further, more localized regional patterns emerge.\n\n51 communities: state-level subreddits for the 50 states + Washington, D.C.\n\n\n\n\n\nOnline connectedness contains geographic structure: states with similar patterns of Reddit co-participation tend to form geographically meaningful groups.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-page.html#what-does-reddit-connectedness-tell-us",
+    "href": "cloud-page.html#what-does-reddit-connectedness-tell-us",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "What Does Reddit Connectedness Tell Us?",
+    "text": "What Does Reddit Connectedness Tell Us?\n\n\n\nMain Findings\n1. Online connectedness has a strong geographic structure\nLocation-based communities that are geographically closer tend to share more contributors, with a substantially stronger distance relationship within 200 miles.\n2. State boundaries remain visible online\nCommunities within the same state share more contributors even after accounting for geographic distance and subreddit-specific differences.\n3. Geography also emerges from the network itself\nUsing only patterns of Reddit connectedness, network embeddings and hierarchical clustering recover recognizable regional structure among U.S. states.\n\n\n\nInterpretation & Limitations\n\nA Reddit contributor is not necessarily a resident of the place represented by a subreddit.\nShared participation measures co-participation, not friendship or direct social interaction.\nLocation-based subreddits differ substantially in population, activity, and geographic scale.\nThe regression results describe associations, not causal effects.\n\n\nThe state-level clustering uses comparable geographic units (50 states + Washington, D.C.), while the broader pairwise analysis includes location-based communities at multiple geographic scales.\n\n\n\n\n\nTakeaway: Patterns of shared online participation provide a measurable signal of relationships between places—one that reflects physical distance and administrative boundaries while also revealing broader regional structure.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project"
+    ]
+  },
+  {
+    "objectID": "cloud-slides.html#can-connectedness-reconstruct-geographic-regions",
+    "href": "cloud-slides.html#can-connectedness-reconstruct-geographic-regions",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Can Connectedness Reconstruct Geographic Regions?",
+    "text": "Can Connectedness Reconstruct Geographic Regions?\nInstead of using geography to explain connectedness, I used the network of shared Reddit participation itself to identify groups of places with similar connections.\n\n\nPCI Network Size-adjusted shared-author connections\n\n\n→\n\n\nNode2Vec Learn a network embedding for each state\n\n\n→\n\n\nHierarchical Clustering Complete linkage on state embeddings\n\n\n→\n\n\nGeographic Regions Compare clusters with the U.S. map\n\n\n\n\n\n\nWhat Emerges?\nBroad geographic structure appears without using geographic distance in clustering.\nAt lower values of \\(k\\), the network produces broad regional divisions, including a recognizable East–West structure.\nAs the hierarchy is divided further, more localized regional patterns emerge.\n\n51 communities: state-level subreddits for the 50 states + Washington, D.C.\n\n\n\nOnline connectedness contains geographic structure: states with similar patterns of Reddit co-participation tend to form geographically meaningful groups."
+  },
+  {
+    "objectID": "cloud-slides.html#what-does-reddit-connectedness-tell-us",
+    "href": "cloud-slides.html#what-does-reddit-connectedness-tell-us",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "What Does Reddit Connectedness Tell Us?",
+    "text": "What Does Reddit Connectedness Tell Us?\n\n\nMain Findings\n1. Online connectedness has a strong geographic structure\nLocation-based communities that are geographically closer tend to share more contributors, with a substantially stronger distance relationship within 200 miles.\n2. State boundaries remain visible online\nCommunities within the same state share more contributors even after accounting for geographic distance and subreddit-specific differences.\n3. Geography also emerges from the network itself\nUsing only patterns of Reddit connectedness, network embeddings and hierarchical clustering recover recognizable regional structure among U.S. states.\n\nInterpretation & Limitations\n\nA Reddit contributor is not necessarily a resident of the place represented by a subreddit.\nShared participation measures co-participation, not friendship or direct social interaction.\nLocation-based subreddits differ substantially in population, activity, and geographic scale.\nThe regression results describe associations, not causal effects.\n\n\nThe state-level clustering uses comparable geographic units (50 states + Washington, D.C.), while the broader pairwise analysis includes location-based communities at multiple geographic scales.\n\n\n\nTakeaway: Patterns of shared online participation provide a measurable signal of relationships between places—one that reflects physical distance and administrative boundaries while also revealing broader regional structure.\n\n\n\n\n\nBailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259."
   }
 ]

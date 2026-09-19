@@ -16,8 +16,14 @@ website:
         contents:
         - href: "https://github.com/h-christy"
           text: Github Portfolio
-        - href: ed-project.qmd
-          text: ED Project slides
+        # - href: ed-project.qmd
+        #   text: ED Project slides
+        - href: ed-project-en.qmd
+          text: ED Project slides (en)
+        # - href: presentation.qmd
+        #   text: Presentation
+        - href: cloud-project.qmd
+          text: Cloud Project
 
 # format:
 #   html:

@@ -1,6 +1,6 @@
 ---
-title: "Predicting Emergency Department Disposition using Statistical Learning"
-subtitle: "2025 course project"
+title: "許多元作品集"
+subtitle: "2026"
 execute:
   echo: true
 format:
@@ -11,7 +11,7 @@ format:
     df-print: kable
   revealjs:
     output-file: "ed-project-slides.html"
-    css: styles.css
+    css: slides.css
     df-print: kable
     slide-number: true
     scrollable: true
@@ -23,5 +23,17 @@ bibliography: ref.bib
 
 ## 許多元作品集
 
+- 急診室患者多元分類模型
 
+## 急診室患者多元分類模型
+
+#### Predicting Emergency Department Disposition with Statistical Learning
+
+- 2025 Team project (Christy Hsu | Wendy Hu) for Statistical Learning
+
+#### 研究問題和資料
+
+##
+
+## 特徵重要性
 
