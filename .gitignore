@@ -2,7 +2,6 @@
 .DS_Store
 git-push.sh
 style.css
-data
 slides.css
 styles.css
 presentation.qmd

@@ -6,7 +6,9 @@ format:
   html:
     output-file: "cloud-page.html"
     css: styles.css
+    theme: cosmo
     toc: true
+    toc-depth: 2
     df-print: kable
   revealjs:
     output-file: "cloud-slides.html"

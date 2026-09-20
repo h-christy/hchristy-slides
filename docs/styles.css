@@ -1,11 +1,303 @@
-/* css styles */
-body {
-    font-family: "Galvji", sans-serif;
-    font-size: 13px;
+/* =========================================================
+   HTML Website
+   Reddit Place Connectedness Project
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. Base typography
+   --------------------------------------------------------- */
+
+   body {
+    font-family: "Galvji", "Avenir Next", "Avenir", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #242424;
   }
-  .reveal {
-  font-family: 'Galvji', sans-serif;
+  
+  
+  /* ---------------------------------------------------------
+     2. Main content width
+     --------------------------------------------------------- */
+  
+  main.content {
+    max-width: 950px;
   }
-  .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
-  font-family: 'Galvji', serif;
+  
+  
+  /* ---------------------------------------------------------
+     3. Headings
+     --------------------------------------------------------- */
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Galvji", "Avenir Next", "Avenir", sans-serif;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+  
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.55rem;
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+    margin-top: 1.6rem;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     4. Body text
+     --------------------------------------------------------- */
+  
+  p {
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  li {
+    margin-bottom: 0.3rem;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     5. Links
+     --------------------------------------------------------- */
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     6. Figures
+     --------------------------------------------------------- */
+  
+  figure {
+    margin: 1.5rem auto;
+  }
+  
+  figure img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .figure-caption,
+  figcaption {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    opacity: 0.75;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     7. Tables
+     --------------------------------------------------------- */
+  
+  table {
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+  
+  table th {
+    font-weight: 600;
+  }
+  
+  table th,
+  table td {
+    padding: 0.45rem 0.7rem;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     8. Flow diagrams
+     --------------------------------------------------------- */
+  
+  .flow {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr) auto
+      minmax(0, 1fr) auto
+      minmax(0, 1fr) auto
+      minmax(0, 1fr);
+  
+    align-items: stretch;
+    column-gap: 0.6rem;
+  
+    width: 100%;
+    margin: 1.5rem auto;
+  }
+  
+  .flow-step {
+    min-width: 0;
+    box-sizing: border-box;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 1rem 0.7rem;
+  
+    border: 1px solid #b8b8b8;
+    border-radius: 0.4rem;
+  
+    text-align: center;
+    line-height: 1.25;
+  }
+  
+  .flow-step strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  
+  .flow-step small {
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+  
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  .flow-step.accent {
+    border-width: 2px;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     9. Takeaway boxes
+     --------------------------------------------------------- */
+  
+  .takeaway {
+    margin: 1.5rem 0;
+  
+    padding: 0.8rem 1rem;
+  
+    border-left: 4px solid currentColor;
+    border-radius: 0.2rem;
+  
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .takeaway p {
+    margin: 0;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     10. Method / caveat boxes
+     --------------------------------------------------------- */
+  
+  .method-note {
+    margin: 1.2rem 0;
+  
+    padding: 0.75rem 0.9rem;
+  
+    border: 1px solid #b8b8b8;
+    border-radius: 0.3rem;
+  
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .method-note p {
+    margin: 0;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     11. Utility classes
+     --------------------------------------------------------- */
+  
+  .small {
+    font-size: 0.9rem;
+  }
+  
+  .smaller {
+    font-size: 0.82rem;
+  }
+  
+  .tiny {
+    font-size: 0.74rem;
+  }
+  
+  .muted {
+    opacity: 0.7;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     12. References
+     --------------------------------------------------------- */
+  
+  .references {
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+  
+  .citation {
+    font-size: 0.95em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     13. Code
+     --------------------------------------------------------- */
+  
+  code {
+    font-family:
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      monospace;
+  }
+  
+  pre {
+    font-size: 0.85rem;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     14. Responsive layout
+     --------------------------------------------------------- */
+  
+  @media (max-width: 768px) {
+  
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .flow-arrow {
+      transform: rotate(90deg);
+    }
+  
   }
