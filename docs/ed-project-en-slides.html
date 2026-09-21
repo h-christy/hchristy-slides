@@ -219,7 +219,7 @@
 <span id="cb1-5"><a></a>                     arrival    diagnosis   procedures    features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:42%;">
 <h4 id="national-hospital-ambulatory-medical-care-survey-nhamcs">2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)</h4>
-<p>From U.S. Centers for Disease Control and Prevention (CDC)</p>
+<p>From U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022</p>
 <p><img data-src="data/img/dataset-dim.png"></p>
 </div></div>
 <div class="flow">
@@ -242,7 +242,7 @@
 →
 </div>
 <div class="flow-step accent">
-<p><strong>Statistical learning</strong> <small>Lasso · SVM · RF · XGBoost</small></p>
+<p><strong>Statistical learning</strong> <small>Lasso · SVM · Random Forest· XGBoost</small></p>
 </div>
 </div>
 <div class="slide-footer-note">
@@ -253,15 +253,15 @@
 <h2>Understanding the Outcome</h2>
 <div class="columns">
 <div class="column" style="width:53%;">
-<h4 id="non-mutually-exclusive-indicators">16 non-mutually-exclusive indicators</h4>
-<p><img data-src="data/img/disposition-prevalence.png" style="width:100.0%" alt="Prevalence of the original NHAMCS emergency department disposition indicators"></p>
+<h4 id="non-mutually-exclusive-variables">16 non-mutually-exclusive variables</h4>
+<p><img data-src="data/img/disposition-prevalence.png" style="width:100.0%" alt="Prevalence of the original NHAMCS emergency department dispositions"></p>
 </div><div class="column" style="width:47%;">
 <h4 id="overlap-was-structured">Overlap was structured</h4>
-<p><img data-src="data/img/disposition-combinations.png" style="width:100.0%" alt="Most frequent combinations of NHAMCS emergency department disposition indicators"></p>
+<p><img data-src="data/img/disposition-combinations.png" style="width:100.0%" alt="Most frequent combinations of NHAMCS emergency department disposition variables"></p>
 </div></div>
 <div class="flow">
 <div class="flow-step">
-<p><strong>16 binary indicators</strong></p>
+<p><strong>16 binary variables</strong></p>
 <p><small>Yes / No<br>Non-mutually-exclusive</small></p>
 </div>
 <div class="flow-arrow">
@@ -298,47 +298,36 @@
 <p><img data-src="data/img/model-comparison.png" style="width:100.0%"></p>
 <p><strong>XGBoost</strong> achieved the highest accuracy and F1, while <strong>SVM</strong> had the highest reported AUC.</p>
 </div><div class="column" style="width:57%;">
-<h3 id="random-forest-where-did-errors-occur">Random Forest: where did errors occur?</h3>
+<h3 id="xgboost-test-performance-where-did-errors-occur">XGBoost test performance: where did errors occur?</h3>
 <p><img data-src="data/img/rf-confusion-normalized.png" style="width:100.0%"></p>
-<p><strong>Transfer</strong> was frequently classified as admit; <strong>left early</strong> was also harder to distinguish than admit or returned.</p>
+<p><strong>Transfer</strong> was frequently classified as <strong>admit</strong>; <strong>Left</strong> was also harder to distinguish than admit or returned. A preliminary explanation attributes to <strong>class imbalance</strong> in our training data.</p>
 </div></div>
-<p><strong>Takeaway:</strong> Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished.</p>
+<p><strong>Takeaway:</strong> The misclassification <strong>Transfer → Admit</strong>, possibly because both groups involve patients requiring continued care. The distinction may depend not only on clinical presentation but also on hospital resource differences.</p>
 </section>
 <section id="what-did-the-model-learn" class="slide level2">
-<h2>What Did the Model Learn?</h2>
+<h2><strong>What Did the Model Learn?</strong></h2>
 <div class="columns">
-<div class="column" style="width:55%;">
-<h3 id="random-forest-feature-importance">Random Forest feature importance</h3>
-<p><img data-src="data/img/rf-feature-importance.png"></p>
+<div class="column" style="width:48%;">
+<h3 id="overall-feature-importance"><strong>Overall feature importance</strong></h3>
+<div class="figure-model">
+Random Forest
+</div>
+<p><img data-src="data/img/rf-feature-importance.png" style="width:100.0%"></p>
 <div class="model-summary">
-<p><strong>Length of visit and medication utilization were among the strongest predictors</strong>, alongside vital signs, procedures, and hospital characteristics.</p>
+<p>Important predictors spanned multiple aspects of the ED encounter, including <strong>vital signs, medication use, procedures, and hospital characteristics</strong>.</p>
 </div>
-</div><div class="column" style="width:45%;">
-<h3 id="from-course-project-to-healthcare-research">From course project to healthcare research</h3>
-<div class="reflection-item">
-<p><span class="reflection-number">01</span></p>
-<div>
-<p><strong>Prediction timing matters</strong></p>
-<p>Some highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.</p>
+</div><div class="column" style="width:52%;">
+<h3 id="feature-importance-by-class-coefficients-of-logistic-regression"><strong>Feature importance by class: coefficients of Logistic Regression</strong></h3>
+<div class="figure-model">
+Multinomial Regression with Lasso
 </div>
-</div>
-<div class="reflection-item">
-<p><span class="reflection-number">02</span></p>
-<div>
-<p><strong>Outcome definition matters</strong></p>
-<p>Raw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.</p>
-</div>
-</div>
-<div class="reflection-item">
-<p><span class="reflection-number">03</span></p>
-<div>
-<p><strong>How I would extend the study</strong></p>
-<p>Define the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.</p>
-</div>
+<p><img data-src="data/img/class-specific-feature-importance2.png" style="width:100.0%"></p>
+<div class="model-summary">
+<p><strong>Injury-related variables dominated most classes</strong>, and are particularly notable for <code>left</code> and <code>return ed</code> dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for <code>admission</code> and <code>discharge</code> and chief complaints variables for <code>transfer</code> for example</p>
 </div>
 </div></div>
 <div class="takeaway">
-<p><strong>Reflection:</strong> The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance.</p>
+<p><strong>Takeaway:</strong> The models drew on a broad feature space, while class-specific analysis revealed that <strong>different disposition outcomes were characterized by different combinations of patient and ED information</strong>.</p>
 </div>
 
 

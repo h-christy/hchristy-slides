@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-analytical-question" id="toc-data-analytical-question" class="nav-link active" data-scroll-target="#data-analytical-question">Data &amp; Analytical Question</a></li>
   <li><a href="#understanding-the-outcome" id="toc-understanding-the-outcome" class="nav-link" data-scroll-target="#understanding-the-outcome">Understanding the Outcome</a></li>
   <li><a href="#model-performance-error-analysis" id="toc-model-performance-error-analysis" class="nav-link" data-scroll-target="#model-performance-error-analysis">Model Performance &amp; Error Analysis</a></li>
-  <li><a href="#what-did-the-model-learn" id="toc-what-did-the-model-learn" class="nav-link" data-scroll-target="#what-did-the-model-learn">What Did the Model Learn?</a></li>
+  <li><a href="#what-did-the-model-learn" id="toc-what-did-the-model-learn" class="nav-link" data-scroll-target="#what-did-the-model-learn"><strong>What Did the Model Learn?</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ed-project-en-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><div class="column" style="width:42%;">
 <section id="national-hospital-ambulatory-medical-care-survey-nhamcs" class="level4">
 <h4 class="anchored" data-anchor-id="national-hospital-ambulatory-medical-care-survey-nhamcs">2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)</h4>
-<p>From U.S. Centers for Disease Control and Prevention (CDC)</p>
+<p>From U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022</p>
 <p><img src="data/img/dataset-dim.png" class="img-fluid"></p>
 </section>
 </div>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 →
 </div>
 <div class="flow-step accent">
-<p><strong>Statistical learning</strong> <small>Lasso · SVM · RF · XGBoost</small></p>
+<p><strong>Statistical learning</strong> <small>Lasso · SVM · Random Forest· XGBoost</small></p>
 </div>
 </div>
 <div class="slide-footer-note">
@@ -281,20 +281,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="understanding-the-outcome">Understanding the Outcome</h2>
 <div class="columns">
 <div class="column" style="width:53%;">
-<section id="non-mutually-exclusive-indicators" class="level4">
-<h4 class="anchored" data-anchor-id="non-mutually-exclusive-indicators">16 non-mutually-exclusive indicators</h4>
-<p><img src="data/img/disposition-prevalence.png" class="img-fluid" style="width:100.0%" alt="Prevalence of the original NHAMCS emergency department disposition indicators"></p>
+<section id="non-mutually-exclusive-variables" class="level4">
+<h4 class="anchored" data-anchor-id="non-mutually-exclusive-variables">16 non-mutually-exclusive variables</h4>
+<p><img src="data/img/disposition-prevalence.png" class="img-fluid" style="width:100.0%" alt="Prevalence of the original NHAMCS emergency department dispositions"></p>
 </section>
 </div><div class="column" style="width:47%;">
 <section id="overlap-was-structured" class="level4">
 <h4 class="anchored" data-anchor-id="overlap-was-structured">Overlap was structured</h4>
-<p><img src="data/img/disposition-combinations.png" class="img-fluid" style="width:100.0%" alt="Most frequent combinations of NHAMCS emergency department disposition indicators"></p>
+<p><img src="data/img/disposition-combinations.png" class="img-fluid" style="width:100.0%" alt="Most frequent combinations of NHAMCS emergency department disposition variables"></p>
 </section>
 </div>
 </div>
 <div class="flow">
 <div class="flow-step">
-<p><strong>16 binary indicators</strong></p>
+<p><strong>16 binary variables</strong></p>
 <p><small>Yes / No<br>Non-mutually-exclusive</small></p>
 </div>
 <div class="flow-arrow">
@@ -333,55 +333,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>XGBoost</strong> achieved the highest accuracy and F1, while <strong>SVM</strong> had the highest reported AUC.</p>
 </section>
 </div><div class="column" style="width:57%;">
-<section id="random-forest-where-did-errors-occur" class="level3">
-<h3 class="anchored" data-anchor-id="random-forest-where-did-errors-occur">Random Forest: where did errors occur?</h3>
+<section id="xgboost-test-performance-where-did-errors-occur" class="level3">
+<h3 class="anchored" data-anchor-id="xgboost-test-performance-where-did-errors-occur">XGBoost test performance: where did errors occur?</h3>
 <p><img src="data/img/rf-confusion-normalized.png" class="img-fluid" style="width:100.0%"></p>
-<p><strong>Transfer</strong> was frequently classified as admit; <strong>left early</strong> was also harder to distinguish than admit or returned.</p>
+<p><strong>Transfer</strong> was frequently classified as <strong>admit</strong>; <strong>Left</strong> was also harder to distinguish than admit or returned. A preliminary explanation attributes to <strong>class imbalance</strong> in our training data.</p>
 </section>
 </div>
 </div>
-<p><strong>Takeaway:</strong> Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished.</p>
+<p><strong>Takeaway:</strong> The misclassification <strong>Transfer → Admit</strong>, possibly because both groups involve patients requiring continued care. The distinction may depend not only on clinical presentation but also on hospital resource differences.</p>
 </section>
 <section id="what-did-the-model-learn" class="level2">
-<h2 class="anchored" data-anchor-id="what-did-the-model-learn">What Did the Model Learn?</h2>
+<h2 class="anchored" data-anchor-id="what-did-the-model-learn"><strong>What Did the Model Learn?</strong></h2>
 <div class="columns">
-<div class="column" style="width:55%;">
-<section id="random-forest-feature-importance" class="level3">
-<h3 class="anchored" data-anchor-id="random-forest-feature-importance">Random Forest feature importance</h3>
-<p><img src="data/img/rf-feature-importance.png" class="img-fluid"></p>
+<div class="column" style="width:48%;">
+<section id="overall-feature-importance" class="level3">
+<h3 class="anchored" data-anchor-id="overall-feature-importance"><strong>Overall feature importance</strong></h3>
+<div class="figure-model">
+Random Forest
+</div>
+<p><img src="data/img/rf-feature-importance.png" class="img-fluid" style="width:100.0%"></p>
 <div class="model-summary">
-<p><strong>Length of visit and medication utilization were among the strongest predictors</strong>, alongside vital signs, procedures, and hospital characteristics.</p>
+<p>Important predictors spanned multiple aspects of the ED encounter, including <strong>vital signs, medication use, procedures, and hospital characteristics</strong>.</p>
 </div>
 </section>
-</div><div class="column" style="width:45%;">
-<section id="from-course-project-to-healthcare-research" class="level3">
-<h3 class="anchored" data-anchor-id="from-course-project-to-healthcare-research">From course project to healthcare research</h3>
-<div class="reflection-item">
-<p><span class="reflection-number">01</span></p>
-<div>
-<p><strong>Prediction timing matters</strong></p>
-<p>Some highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.</p>
+</div><div class="column" style="width:52%;">
+<section id="feature-importance-by-class-coefficients-of-logistic-regression" class="level3">
+<h3 class="anchored" data-anchor-id="feature-importance-by-class-coefficients-of-logistic-regression"><strong>Feature importance by class: coefficients of Logistic Regression</strong></h3>
+<div class="figure-model">
+Multinomial Regression with Lasso
 </div>
-</div>
-<div class="reflection-item">
-<p><span class="reflection-number">02</span></p>
-<div>
-<p><strong>Outcome definition matters</strong></p>
-<p>Raw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.</p>
-</div>
-</div>
-<div class="reflection-item">
-<p><span class="reflection-number">03</span></p>
-<div>
-<p><strong>How I would extend the study</strong></p>
-<p>Define the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.</p>
-</div>
+<p><img src="data/img/class-specific-feature-importance2.png" class="img-fluid" style="width:100.0%"></p>
+<div class="model-summary">
+<p><strong>Injury-related variables dominated most classes</strong>, and are particularly notable for <code>left</code> and <code>return ed</code> dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for <code>admission</code> and <code>discharge</code> and chief complaints variables for <code>transfer</code> for example</p>
 </div>
 </section>
 </div>
 </div>
 <div class="takeaway">
-<p><strong>Reflection:</strong> The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance.</p>
+<p><strong>Takeaway:</strong> The models drew on a broad feature space, while class-specific analysis revealed that <strong>different disposition outcomes were characterized by different combinations of patient and ED information</strong>.</p>
 </div>
 
 

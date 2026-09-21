@@ -213,7 +213,7 @@
     "href": "ed-project-en.html#data-analytical-question",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "",
-    "text": "Can information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n\nFrom U.S. Centers for Disease Control and Prevention (CDC)\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
+    "text": "Can information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n\nFrom U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · Random Forest· XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
     "crumbs": [
       "My Projects",
       "ED Project slides (en)"
@@ -224,7 +224,7 @@
     "href": "ed-project-en.html#understanding-the-outcome",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "Understanding the Outcome",
-    "text": "Understanding the Outcome\n\n\n\n16 non-mutually-exclusive indicators\n\n\n\n\nOverlap was structured\n\n\n\n\n\n\n16 binary indicators\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy.",
+    "text": "Understanding the Outcome\n\n\n\n16 non-mutually-exclusive variables\n\n\n\n\nOverlap was structured\n\n\n\n\n\n\n16 binary variables\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy.",
     "crumbs": [
       "My Projects",
       "ED Project slides (en)"
@@ -271,14 +271,14 @@
     "href": "ed-project-en-slides.html#data-analytical-question",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "Data & Analytical Question",
-    "text": "Data & Analytical Question\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)\nFrom U.S. Centers for Disease Control and Prevention (CDC)\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification"
+    "text": "Data & Analytical Question\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)\nFrom U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · Random Forest· XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification"
   },
   {
     "objectID": "ed-project-en-slides.html#understanding-the-outcome",
     "href": "ed-project-en-slides.html#understanding-the-outcome",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "Understanding the Outcome",
-    "text": "Understanding the Outcome\n\n\n16 non-mutually-exclusive indicators\n\n\nOverlap was structured\n\n\n\n\n16 binary indicators\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy."
+    "text": "Understanding the Outcome\n\n\n16 non-mutually-exclusive variables\n\n\nOverlap was structured\n\n\n\n\n16 binary variables\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy."
   },
   {
     "objectID": "ed-project-en-slides.html#slide-3",
@@ -317,7 +317,7 @@
     "href": "ed-project-en.html#model-performance-error-analysis",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "Model Performance & Error Analysis",
-    "text": "Model Performance & Error Analysis\n\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\n\n\nRandom Forest: where did errors occur?\n\nTransfer was frequently classified as admit; left early was also harder to distinguish than admit or returned.\n\n\n\nTakeaway: Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished.",
+    "text": "Model Performance & Error Analysis\n\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\n\n\nXGBoost test performance: where did errors occur?\n\nTransfer was frequently classified as admit; Left was also harder to distinguish than admit or returned. A preliminary explanation attributes to class imbalance in our training data.\n\n\n\nTakeaway: The misclassification Transfer → Admit, possibly because both groups involve patients requiring continued care. The distinction may depend not only on clinical presentation but also on hospital resource differences.",
     "crumbs": [
       "My Projects",
       "ED Project slides (en)"
@@ -328,7 +328,7 @@
     "href": "ed-project-en.html#what-did-the-model-learn",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "What Did the Model Learn?",
-    "text": "What Did the Model Learn?\n\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance.",
+    "text": "What Did the Model Learn?\n\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variables for transfer for example\n\n\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information.",
     "crumbs": [
       "My Projects",
       "ED Project slides (en)"
@@ -339,14 +339,14 @@
     "href": "ed-project-en-slides.html#model-performance-error-analysis",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "Model Performance & Error Analysis",
-    "text": "Model Performance & Error Analysis\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\nRandom Forest: where did errors occur?\n\nTransfer was frequently classified as admit; left early was also harder to distinguish than admit or returned.\n\nTakeaway: Aggregate performance was only part of the evaluation—class-specific errors revealed substantial differences in how well the five outcomes could be distinguished."
+    "text": "Model Performance & Error Analysis\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\nXGBoost test performance: where did errors occur?\n\nTransfer was frequently classified as admit; Left was also harder to distinguish than admit or returned. A preliminary explanation attributes to class imbalance in our training data.\n\nTakeaway: The misclassification Transfer → Admit, possibly because both groups involve patients requiring continued care. The distinction may depend not only on clinical presentation but also on hospital resource differences."
   },
   {
     "objectID": "ed-project-en-slides.html#what-did-the-model-learn",
     "href": "ed-project-en-slides.html#what-did-the-model-learn",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "What Did the Model Learn?",
-    "text": "What Did the Model Learn?\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance."
+    "text": "What Did the Model Learn?\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variables for transfer for example\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information."
   },
   {
     "objectID": "ed-project-en.html#model-performance-error-analysis-1",
@@ -362,9 +362,9 @@
   {
     "objectID": "ed-project-en.html#what-did-the-model-learn-1",
     "href": "ed-project-en.html#what-did-the-model-learn-1",
-    "title": "Christy Hsu",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "What Did the Model Learn?",
-    "text": "What Did the Model Learn?\n\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance.",
+    "text": "What Did the Model Learn?\n\n\n\nRandom Forest: overall importance\n\n\nAmong 188 candidate variables, highly ranked features spanned vital signs, medication use, procedures, and ED/hospital characteristics.\n\n\n\n\nLasso: class-specific importance\n\n\nThe feature profile also varied by disposition: injury-related features were prominent across classes, while diagnosis, chief complaint, procedures, and other feature groups contributed differently by outcome.\n\n\n\n\n\nTakeaway: Disposition was associated with information across the patient’s condition, treatment, and care trajectory, while different outcomes exhibited distinct predictive feature profiles.",
     "crumbs": [
       "My Projects",
       "ED Project slides (en)"
@@ -380,16 +380,16 @@
   {
     "objectID": "ed-project-en-slides.html#what-did-the-model-learn-1",
     "href": "ed-project-en-slides.html#what-did-the-model-learn-1",
-    "title": "Christy Hsu",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "What Did the Model Learn?",
-    "text": "What Did the Model Learn?\n\n\nRandom Forest feature importance\n\n\nLength of visit and medication utilization were among the strongest predictors, alongside vital signs, procedures, and hospital characteristics.\n\n\nFrom course project to healthcare research\n\n01\n\nPrediction timing matters\nSome highly ranked variables—such as length of visit and medications—accumulate during the ED visit and may not be available at initial triage.\n\n\n\n02\n\nOutcome definition matters\nRaw NHAMCS disposition indicators overlap and can represent different parts of the patient’s care trajectory.\n\n\n\n03\n\nHow I would extend the study\nDefine the prediction time point and outcome with clinical collaborators, then restrict predictors accordingly and evaluate calibration and uncertainty.\n\n\n\n\nReflection: The project is best interpreted as retrospective classification of observed ED outcomes—not evidence of triage-time predictive performance."
+    "text": "What Did the Model Learn?\n\n\nRandom Forest: overall importance\n\n\nAmong 188 candidate variables, highly ranked features spanned vital signs, medication use, procedures, and ED/hospital characteristics.\n\n\nLasso: class-specific importance\n\n\nThe feature profile also varied by disposition: injury-related features were prominent across classes, while diagnosis, chief complaint, procedures, and other feature groups contributed differently by outcome.\n\n\n\nTakeaway: Disposition was associated with information across the patient’s condition, treatment, and care trajectory, while different outcomes exhibited distinct predictive feature profiles."
   },
   {
     "objectID": "ed-project-en.html",
     "href": "ed-project-en.html",
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "",
-    "text": "Can information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n\nFrom U.S. Centers for Disease Control and Prevention (CDC)\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · RF · XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
+    "text": "Can information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n\nFrom U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · Random Forest· XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
     "crumbs": [
       "My Projects",
       "ED Project slides (en)"
@@ -527,5 +527,23 @@
     "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
     "section": "What Does Reddit Connectedness Tell Us?",
     "text": "What Does Reddit Connectedness Tell Us?\n\n\nMain Findings\n1. Online connectedness has a strong geographic structure\nLocation-based communities that are geographically closer tend to share more contributors, with a substantially stronger distance relationship within 200 miles.\n2. State boundaries remain visible online\nCommunities within the same state share more contributors even after accounting for geographic distance and subreddit-specific differences.\n3. Geography also emerges from the network itself\nUsing only patterns of Reddit connectedness, network embeddings and hierarchical clustering recover recognizable regional structure among U.S. states.\n\nInterpretation & Limitations\n\nA Reddit contributor is not necessarily a resident of the place represented by a subreddit.\nShared participation measures co-participation, not friendship or direct social interaction.\nLocation-based subreddits differ substantially in population, activity, and geographic scale.\nThe regression results describe associations, not causal effects.\n\n\nThe state-level clustering uses comparable geographic units (50 states + Washington, D.C.), while the broader pairwise analysis includes location-based communities at multiple geographic scales.\n\n\n\nTakeaway: Patterns of shared online participation provide a measurable signal of relationships between places—one that reflects physical distance and administrative boundaries while also revealing broader regional structure.\n\n\n\n\n\nBailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259."
+  },
+  {
+    "objectID": "ed-project-en.html#what-did-the-model-learn-2",
+    "href": "ed-project-en.html#what-did-the-model-learn-2",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variable for transfer for example\n\n\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information.",
+    "crumbs": [
+      "My Projects",
+      "ED Project slides (en)"
+    ]
+  },
+  {
+    "objectID": "ed-project-en-slides.html#what-did-the-model-learn-2",
+    "href": "ed-project-en-slides.html#what-did-the-model-learn-2",
+    "title": "Prediciting Emergency Department Disposition using Statistical Learning",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variable for transfer for example\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information."
   }
 ]
