@@ -1,9 +1,6 @@
 /.quarto/
 .DS_Store
 git-push.sh
-style.css
-slides.css
-styles.css
 presentation.qmd
 ed-project.qmd
 _site

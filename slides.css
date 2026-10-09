@@ -1,0 +1,556 @@
+/* =========================================================
+   Reveal.js Slides
+   ED Disposition Statistical Learning Project
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. Base typography
+   --------------------------------------------------------- */
+
+   .reveal {
+    font-family: "Galvji", "Avenir Next", "Avenir", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     2. Headings
+     --------------------------------------------------------- */
+  
+  .reveal h1,
+  .reveal h2,
+  .reveal h3,
+  .reveal h4,
+  .reveal h5,
+  .reveal h6 {
+    font-family: "Galvji", "Avenir Next", "Avenir", sans-serif;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+  
+  .reveal h1 {
+    font-size: 1.8em;
+  }
+  
+  .reveal h2 {
+    font-size: 1.4em;
+    margin-bottom: 0.55em;
+  }
+  
+  .reveal h3 {
+    font-size: 1.1em;
+    margin-bottom: 0.4em;
+  }
+  
+  .reveal h4 {
+    font-size: 0.95em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     3. Body text
+     --------------------------------------------------------- */
+  
+  .reveal p {
+    font-size: 0.85em;
+    line-height: 1.35;
+    margin-top: 0.45em;
+    margin-bottom: 0.45em;
+  }
+  
+  .reveal ul,
+  .reveal ol {
+    font-size: 0.85em;
+    line-height: 1.35;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+  }
+  
+  .reveal li {
+    margin-bottom: 0.25em;
+  }
+  
+  .reveal li > ul,
+  .reveal li > ol {
+    font-size: 0.95em;
+    margin-top: 0.2em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     4. Useful text-size classes
+  
+     Usage:
+     ::: {.small}
+     Some secondary text
+     :::
+     --------------------------------------------------------- */
+  
+  .reveal .small {
+    font-size: 0.75em;
+  }
+  
+  .reveal .smaller {
+    font-size: 0.68em;
+  }
+  
+  .reveal .tiny {
+    font-size: 0.58em;
+  }
+  
+  .reveal .muted {
+    opacity: 0.7;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     5. Links
+     --------------------------------------------------------- */
+  
+  .reveal a {
+    text-decoration: none;
+  }
+  
+  .reveal a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     6. Tables
+     --------------------------------------------------------- */
+  
+  .reveal table {
+    font-size: 0.68em;
+    line-height: 1.25;
+    margin: 0.7em auto;
+    width: auto;
+  }
+  
+  .reveal table th {
+    font-weight: 600;
+  }
+  
+  .reveal table th,
+  .reveal table td {
+    padding: 0.35em 0.55em;
+  }
+  
+  
+  /* Slightly smaller tables when needed */
+  
+  .reveal .small-table table {
+    font-size: 0.58em;
+  }
+  
+  .reveal .tiny-table table {
+    font-size: 0.50em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     7. Code
+     --------------------------------------------------------- */
+  
+  .reveal code {
+    font-family:
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      monospace;
+  }
+  
+  .reveal pre {
+    font-size: 0.58em;
+    line-height: 1.3;
+    width: 100%;
+  }
+  
+  .reveal pre code {
+    max-height: 520px;
+  }
+  
+  
+  /* Inline code */
+  
+  .reveal p code,
+  .reveal li code {
+    font-size: 0.88em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     8. Figures and images
+     --------------------------------------------------------- */
+  
+  .reveal img {
+    max-width: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+  }
+  
+  .reveal figure {
+    margin: 0.5em auto;
+  }
+  
+  .reveal .figure-caption,
+  .reveal figcaption {
+    font-size: 0.58em;
+    line-height: 1.25;
+    margin-top: 0.3em;
+    opacity: 0.75;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     9. Flow diagram
+  
+     Usage:
+  
+     <div class="flow">
+       <div class="flow-step">...</div>
+       <div class="flow-arrow">→</div>
+       ...
+     </div>
+     --------------------------------------------------------- */
+  
+/* =========================================================
+   Flow diagrams
+   ========================================================= */
+
+   .reveal .flow {
+    display: grid !important;
+  
+    /* box | arrow | box | arrow | box | arrow | box */
+    grid-template-columns:
+      minmax(0, 1fr) auto
+      minmax(0, 1fr) auto
+      minmax(0, 1fr) auto
+      minmax(0, 1fr);
+  
+    align-items: stretch;
+    column-gap: 0.35em;
+  
+    width: 100%;
+    margin: 0.9em auto;
+  }
+  
+  /* Individual boxes */
+  
+  .reveal .flow-step {
+    min-width: 0;
+    box-sizing: border-box;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 0.65em 0.45em;
+  
+    border: 1px solid #b8b8b8;
+    border-radius: 0.3em;
+  
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  /* Main box heading */
+  
+  .reveal .flow-step strong {
+    display: block;
+    font-size: 0.68em;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 0.35em;
+  }
+  
+  /* Box description */
+  
+  .reveal .flow-step small {
+    display: block;
+    font-size: 0.48em;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  
+  /* Arrows */
+  
+  .reveal .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-size: 1em;
+    font-weight: 500;
+  
+    padding: 0 0.05em;
+  }
+  
+  /* Final / emphasized step */
+  
+  .reveal .flow-step.accent {
+    border-width: 2px;
+  }
+  
+  
+  /* =========================================================
+     Compact version
+     ========================================================= */
+  
+  .reveal .flow.compact {
+    column-gap: 0.25em;
+    margin: 0.7em auto;
+  }
+  
+  .reveal .flow.compact .flow-step {
+    padding: 0.5em 0.35em;
+  }
+  
+  .reveal .flow.compact .flow-step strong {
+    font-size: 0.64em;
+  }
+  
+  .reveal .flow.compact .flow-step small {
+    font-size: 0.44em;
+  }
+  
+  .reveal .flow.compact .flow-arrow {
+    font-size: 0.9em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     10. Takeaway boxes
+  
+     Usage:
+  
+     ::: {.takeaway}
+     **Takeaway:** ...
+     :::
+     --------------------------------------------------------- */
+  
+  .reveal .takeaway {
+    margin-top: 0.8em;
+  
+    padding: 0.55em 0.75em;
+  
+    border-left: 4px solid currentColor;
+    border-radius: 0.15em;
+  
+    font-size: 0.72em;
+    line-height: 1.35;
+  }
+  
+  .reveal .takeaway p {
+    font-size: inherit;
+    margin: 0;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     11. Method / caveat boxes
+  
+     Useful for methodological qualifications.
+     --------------------------------------------------------- */
+  
+  .reveal .method-note {
+    margin-top: 0.7em;
+  
+    padding: 0.5em 0.7em;
+  
+    border: 1px solid #b8b8b8;
+    border-radius: 0.25em;
+  
+    font-size: 0.65em;
+    line-height: 1.35;
+  }
+  
+  .reveal .method-note p {
+    font-size: inherit;
+    margin: 0;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     12. Quarto callouts
+     --------------------------------------------------------- */
+  
+  .reveal .callout {
+    font-size: 0.72em;
+    line-height: 1.3;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+  }
+  
+  .reveal .callout p {
+    font-size: inherit;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     13. Columns
+  
+     Makes Quarto column content slightly more compact.
+     --------------------------------------------------------- */
+  
+  .reveal .columns {
+    gap: 1.2em;
+  }
+  
+  .reveal .column {
+    min-width: 0;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     14. Blockquotes
+     --------------------------------------------------------- */
+  
+  .reveal blockquote {
+    width: 90%;
+    font-size: 0.75em;
+    line-height: 1.4;
+    padding: 0.4em 0.8em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     15. References / citations / footnotes
+     --------------------------------------------------------- */
+  
+  .reveal .references {
+    font-size: 0.52em;
+    line-height: 1.25;
+  }
+  
+  .reveal .footnotes {
+    font-size: 0.52em;
+    line-height: 1.25;
+  }
+  
+  .reveal .citation {
+    font-size: 0.9em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     16. Slide numbers
+     --------------------------------------------------------- */
+  
+  .reveal .slide-number {
+    font-family: "Galvji", "Avenir Next", "Avenir", sans-serif;
+    font-size: 0.5em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     17. Title slide
+     --------------------------------------------------------- */
+  
+  .reveal .title-slide h1,
+  .reveal #title-slide h1 {
+    font-size: 1.75em;
+    line-height: 1.15;
+    margin-bottom: 0.45em;
+  }
+  
+  .reveal .title-slide .subtitle,
+  .reveal #title-slide .subtitle {
+    font-size: 0.85em;
+    line-height: 1.3;
+  }
+  
+  .reveal .title-slide .author,
+  .reveal #title-slide .author {
+    font-size: 0.72em;
+    margin-top: 1em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     18. Prevent overly large MathJax equations
+     --------------------------------------------------------- */
+  
+  .reveal .MathJax {
+    font-size: 0.9em !important;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     19. Mermaid diagrams
+  
+     Keeps Mermaid reasonably sized within slides.
+     --------------------------------------------------------- */
+  
+  .reveal .mermaid {
+    font-size: 0.7em;
+    margin: 0.6em auto;
+  }
+  
+  .reveal .mermaid svg {
+    max-width: 100%;
+    max-height: 65vh;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     20. Dense slides
+  
+     Apply manually when a particular slide needs more room:
+  
+     ## Model Comparison {.compact}
+     --------------------------------------------------------- */
+  
+  .reveal section.compact {
+    font-size: 0.88em;
+  }
+  
+  .reveal section.compact h2 {
+    margin-bottom: 0.35em;
+  }
+  
+  .reveal section.compact p,
+  .reveal section.compact ul,
+  .reveal section.compact ol {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     21. Extra-dense slides
+  
+     Use sparingly:
+  
+     ## Feature Definitions {.very-compact}
+     --------------------------------------------------------- */
+  
+  .reveal section.very-compact {
+    font-size: 0.78em;
+  }
+  
+  
+  /* ---------------------------------------------------------
+     22. Print / PDF adjustments
+     --------------------------------------------------------- */
+  
+  @media print {
+  
+    .reveal {
+      font-family: "Galvji", "Avenir Next", "Avenir", sans-serif;
+    }
+  
+    .reveal .flow {
+      break-inside: avoid;
+    }
+  
+    .reveal figure {
+      break-inside: avoid;
+    }
+  }
