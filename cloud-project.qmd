@@ -1,7 +1,7 @@
 ---
 title: "Distance vs. Connectedness: Location-based Reddit Forums Analyzed"
 subtitle: "Project Presentation"
-author: "許多元 （Christy Hsu）"
+author: "Christy Hsu"
 format:
   html:
     output-file: "cloud-page.html"
@@ -39,7 +39,7 @@ bibliography: ref.bib
 
 - **64.7M** Reddit posts & comments
 - **4.1M** unique contributors
-- **612** U.S. location-based subreddits
+- **611** U.S. location-based subreddits
 - **14 months** of observation:
   - June 2023 ~ July 2024
 - Data-intensive analysis with **PySpark + AWS**
@@ -80,6 +80,7 @@ bibliography: ref.bib
 :::
 
 > **Goal** Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography.
+>
 > **Core idea:** Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.
 
 
@@ -153,10 +154,9 @@ Their connectedness-based clustering further demonstrated how network relationsh
 
 ### Data
 
-**64.7 million** posts and comments  
-**4.1 million** unique contributors  
-**619** U.S. location-based subreddits  
-**June 2023 – July 2024**
+Unit of observation: **pairs of subreddits**
+
+- `186,355` possible subreddit pairs
 
 Subreddits represent different geographic scales, including **states, cities, metropolitan areas, and other local communities**.
 

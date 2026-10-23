@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.39">
 
-  <meta name="author" content="許多元 （Christy Hsu）">
+  <meta name="author" content="Christy Hsu">
   <title>pred-ed – Distance vs.&nbsp;Connectedness: Location-based Reddit Forums Analyzed</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -155,7 +155,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-許多元 （Christy Hsu） 
+Christy Hsu 
 </div>
 </div>
 </div>
@@ -179,7 +179,7 @@
 <ul>
 <li><strong>64.7M</strong> Reddit posts &amp; comments</li>
 <li><strong>4.1M</strong> unique contributors</li>
-<li><strong>612</strong> U.S. location-based subreddits</li>
+<li><strong>611</strong> U.S. location-based subreddits</li>
 <li><strong>14 months</strong> of observation:
 <ul>
 <li>June 2023 ~ July 2024</li>
@@ -216,7 +216,8 @@
 </div>
 </div></div>
 <blockquote>
-<p><strong>Goal</strong> Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. <strong>Core idea:</strong> Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.</p>
+<p><strong>Goal</strong> Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography.</p>
+<p><strong>Core idea:</strong> Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.</p>
 </blockquote>
 </section>
 <section id="from-online-communities-to-relationships-between-places" class="slide level2">
@@ -265,10 +266,10 @@
 <div class="columns">
 <div class="column" style="width:38%;">
 <h3 id="data">Data</h3>
-<p><strong>64.7 million</strong> posts and comments<br>
-<strong>4.1 million</strong> unique contributors<br>
-<strong>619</strong> U.S. location-based subreddits<br>
-<strong>June 2023 – July 2024</strong></p>
+<p>Unit of observation: <strong>pairs of subreddits</strong></p>
+<ul>
+<li><code>186,355</code> possible subreddit pairs</li>
+</ul>
 <p>Subreddits represent different geographic scales, including <strong>states, cities, metropolitan areas, and other local communities</strong>.</p>
 <div class="small">
 <p>Raw Reddit data were processed with <strong>PySpark on AWS</strong> and combined with geographic information for each community.</p>

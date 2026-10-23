@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="許多元 （Christy Hsu）">
+<meta name="author" content="Christy Hsu">
 
 <title>Distance vs.&nbsp;Connectedness: Location-based Reddit Forums Analyzed – pred-ed</title>
 <style>
@@ -194,6 +194,18 @@ window.Quarto = {
  <span class="menu-text">Cloud Project</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cloud-v2-page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Project V2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about-me-page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Me</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -233,7 +245,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>許多元 （Christy Hsu） </p>
+             <p>Christy Hsu </p>
           </div>
   </div>
     
@@ -267,7 +279,7 @@ Data
 <ul>
 <li><strong>64.7M</strong> Reddit posts &amp; comments</li>
 <li><strong>4.1M</strong> unique contributors</li>
-<li><strong>612</strong> U.S. location-based subreddits</li>
+<li><strong>611</strong> U.S. location-based subreddits</li>
 <li><strong>14 months</strong> of observation:
 <ul>
 <li>June 2023 ~ July 2024</li>
@@ -304,7 +316,8 @@ Data
 </div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Goal</strong> Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. <strong>Core idea:</strong> Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.</p>
+<p><strong>Goal</strong> Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography.</p>
+<p><strong>Core idea:</strong> Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.</p>
 </blockquote>
 </section>
 </section>
@@ -360,10 +373,10 @@ Data
 <div class="column" style="width:38%;">
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
-<p><strong>64.7 million</strong> posts and comments<br>
-<strong>4.1 million</strong> unique contributors<br>
-<strong>619</strong> U.S. location-based subreddits<br>
-<strong>June 2023 – July 2024</strong></p>
+<p>Unit of observation: <strong>pairs of subreddits</strong></p>
+<ul>
+<li><code>186,355</code> possible subreddit pairs</li>
+</ul>
 <p>Subreddits represent different geographic scales, including <strong>states, cities, metropolitan areas, and other local communities</strong>.</p>
 <div class="small">
 <p>Raw Reddit data were processed with <strong>PySpark on AWS</strong> and combined with geographic information for each community.</p>

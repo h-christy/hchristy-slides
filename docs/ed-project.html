@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Predicting Emergency Department Disposition using Statistical Learning – pred-ed</title>
+<title>許多元作品集 – pred-ed</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,81 +71,12 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://github.com/h-christy">My Projects</a></li><li class="breadcrumb-item"><a href="./ed-project.html">ED Project slides</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Christy Hsu</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Home</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">My Projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://github.com/h-christy" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Github Portfolio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ed-project.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ED Project slides</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p>2026-09-15</p>
-</div></div></nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -153,16 +84,19 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#許多元作品集" id="toc-許多元作品集" class="nav-link active" data-scroll-target="#許多元作品集">許多元作品集</a></li>
+  <li><a href="#急診室患者多元分類模型" id="toc-急診室患者多元分類模型" class="nav-link" data-scroll-target="#急診室患者多元分類模型">急診室患者多元分類模型</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#特徵重要性" id="toc-特徵重要性" class="nav-link" data-scroll-target="#特徵重要性">特徵重要性</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ed-project-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://github.com/h-christy">My Projects</a></li><li class="breadcrumb-item"><a href="./ed-project.html">ED Project slides</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Predicting Emergency Department Disposition using Statistical Learning</h1>
-<p class="subtitle lead">2025 course project</p>
+<h1 class="title">許多元作品集</h1>
+<p class="subtitle lead">2026</p>
 </div>
 
 
@@ -181,6 +115,27 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="許多元作品集" class="level2">
 <h2 class="anchored" data-anchor-id="許多元作品集">許多元作品集</h2>
+<ul>
+<li>急診室患者多元分類模型</li>
+</ul>
+</section>
+<section id="急診室患者多元分類模型" class="level2">
+<h2 class="anchored" data-anchor-id="急診室患者多元分類模型">急診室患者多元分類模型</h2>
+<section id="predicting-emergency-department-disposition-with-statistical-learning" class="level4">
+<h4 class="anchored" data-anchor-id="predicting-emergency-department-disposition-with-statistical-learning">Predicting Emergency Department Disposition with Statistical Learning</h4>
+<ul>
+<li>2025 Team project (Christy Hsu | Wendy Hu) for Statistical Learning</li>
+</ul>
+</section>
+<section id="研究問題和資料" class="level4">
+<h4 class="anchored" data-anchor-id="研究問題和資料">研究問題和資料</h4>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+</section>
+<section id="特徵重要性" class="level2">
+<h2 class="anchored" data-anchor-id="特徵重要性">特徵重要性</h2>
 
 
 </section>

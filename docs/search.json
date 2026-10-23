@@ -400,7 +400,7 @@
     "href": "cloud-page.html",
     "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
     "section": "",
-    "text": "Data\n\n\n\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n612 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. Core idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.",
+    "text": "Data\n\n\n\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n611 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography.\nCore idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.",
     "crumbs": [
       "My Projects",
       "Cloud Project"
@@ -411,7 +411,7 @@
     "href": "cloud-page.html#research-question-data",
     "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
     "section": "",
-    "text": "Data\n\n\n\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n612 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. Core idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.",
+    "text": "Data\n\n\n\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n611 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography.\nCore idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data.",
     "crumbs": [
       "My Projects",
       "Cloud Project"
@@ -422,7 +422,7 @@
     "href": "cloud-slides.html#research-question-data",
     "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
     "section": "Research Question & Data",
-    "text": "Research Question & Data\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\n\n\n\n\n\n\n\n\nData\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n612 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography. Core idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data."
+    "text": "Research Question & Data\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\n\n\n\n\n\n\n\n\nData\n\n\n\n64.7M Reddit posts & comments\n4.1M unique contributors\n611 U.S. location-based subreddits\n14 months of observation:\n\nJune 2023 ~ July 2024\n\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\n\nReddit users\n\n\n↓\n\n\nLocation-based subreddits\n\n\n↓\n\n\nShared contributors between subreddit pairs\n\n\n↓\n\n\nOnline connectedness between places\n\n\n\n\nGoal Use naturally occurring online behavior to measure relationships between places, then test how strongly those relationships correspond to physical geography.\nCore idea: Instead of defining regions first, use patterns of shared online participation to ask whether geographic structure emerges from the data."
   },
   {
     "objectID": "cloud-page.html#from-online-communities-to-relationships-between-places",
@@ -454,7 +454,7 @@
     "href": "cloud-page.html#from-reddit-activity-to-place-connectedness",
     "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
     "section": "From Reddit Activity to Place Connectedness",
-    "text": "From Reddit Activity to Place Connectedness\n\n\n\nData\n64.7 million posts and comments\n4.1 million unique contributors\n619 U.S. location-based subreddits\nJune 2023 – July 2024\nSubreddits represent different geographic scales, including states, cities, metropolitan areas, and other local communities.\n\nRaw Reddit data were processed with PySpark on AWS and combined with geographic information for each community.\n\n\n\n\nMeasuring Shared Participation\nFor each pair of subreddits (i) and (j):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere (A_i) and (A_j) are their sets of contributing authors.\nn_shared_authors therefore measures how many users participated in both communities.\nBecause larger subreddits have more opportunities to share users, I also constructed a size-adjusted measure:\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\nUnit of analysis: a pair of location-based subreddits.\nThis pairwise representation allows connectedness to be compared with geographic distance and administrative boundaries, or treated as a weighted network of places.",
+    "text": "From Reddit Activity to Place Connectedness\n\n\n\nData\nUnit of observation: pairs of subreddits\n\n186,355 possible subreddit pairs\n\nSubreddits represent different geographic scales, including states, cities, metropolitan areas, and other local communities.\n\nRaw Reddit data were processed with PySpark on AWS and combined with geographic information for each community.\n\n\n\n\nMeasuring Shared Participation\nFor each pair of subreddits (i) and (j):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere (A_i) and (A_j) are their sets of contributing authors.\nn_shared_authors therefore measures how many users participated in both communities.\nBecause larger subreddits have more opportunities to share users, I also constructed a size-adjusted measure:\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\nUnit of analysis: a pair of location-based subreddits.\nThis pairwise representation allows connectedness to be compared with geographic distance and administrative boundaries, or treated as a weighted network of places.",
     "crumbs": [
       "My Projects",
       "Cloud Project"
@@ -465,7 +465,7 @@
     "href": "cloud-slides.html#from-reddit-activity-to-place-connectedness",
     "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
     "section": "From Reddit Activity to Place Connectedness",
-    "text": "From Reddit Activity to Place Connectedness\n\n\nData\n64.7 million posts and comments\n4.1 million unique contributors\n619 U.S. location-based subreddits\nJune 2023 – July 2024\nSubreddits represent different geographic scales, including states, cities, metropolitan areas, and other local communities.\n\nRaw Reddit data were processed with PySpark on AWS and combined with geographic information for each community.\n\n\nMeasuring Shared Participation\nFor each pair of subreddits (i) and (j):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere (A_i) and (A_j) are their sets of contributing authors.\nn_shared_authors therefore measures how many users participated in both communities.\nBecause larger subreddits have more opportunities to share users, I also constructed a size-adjusted measure:\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\nUnit of analysis: a pair of location-based subreddits.\nThis pairwise representation allows connectedness to be compared with geographic distance and administrative boundaries, or treated as a weighted network of places."
+    "text": "From Reddit Activity to Place Connectedness\n\n\nData\nUnit of observation: pairs of subreddits\n\n186,355 possible subreddit pairs\n\nSubreddits represent different geographic scales, including states, cities, metropolitan areas, and other local communities.\n\nRaw Reddit data were processed with PySpark on AWS and combined with geographic information for each community.\n\n\nMeasuring Shared Participation\nFor each pair of subreddits (i) and (j):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere (A_i) and (A_j) are their sets of contributing authors.\nn_shared_authors therefore measures how many users participated in both communities.\nBecause larger subreddits have more opportunities to share users, I also constructed a size-adjusted measure:\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\nUnit of analysis: a pair of location-based subreddits.\nThis pairwise representation allows connectedness to be compared with geographic distance and administrative boundaries, or treated as a weighted network of places."
   },
   {
     "objectID": "cloud-slides.html#slide-3",
@@ -545,5 +545,534 @@
     "title": "Prediciting Emergency Department Disposition using Statistical Learning",
     "section": "What Did the Model Learn?",
     "text": "What Did the Model Learn?\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variable for transfer for example\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information."
+  },
+  {
+    "objectID": "about-me-page.html",
+    "href": "about-me-page.html",
+    "title": "自我介紹與作品集",
+    "section": "",
+    "text": "2020-2024\n國立台灣大學 歷史學士\n\n研究興趣：文化冷戰、歐洲近代早期政治思想史\n相關修課：計量經濟學、機率與統計推論、線性代數、微積分、離散數學\n\n\n\n\n\n2024-2026\n喬治城大學 資料科學碩士\nGeorgetown University | Data Science & Analytics | Washington D.C.\n\n修課經驗：機器學習、深度學習、資料視覺化、雲端計算、因果推論、自然語言處理\n研究興趣：空間資料分析、機器翻譯、計算社會科學",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#求學",
+    "href": "about-me-page.html#求學",
+    "title": "自我介紹與作品集",
+    "section": "",
+    "text": "許多元\n\n\n2020-2024 國立台灣大學 歷史學士\n\n研究興趣：文化冷戰、近代早期歐洲政治思想\n相關修課：計量經濟學、機率與統計推論、線性代數、微積分、離散數學、商管程式設計\n\n\n\n\n\n2024-2026 喬治城大學 資料科學碩士 Georgetown University (D.C.) Data Science & Analytics\n\n修課經驗：機器學習、深度學習、資料視覺化、地理資訊系統、大數據和雲端計算、因果推論、數據倫理、自然語言處理\n研究興趣：空間資料分析、機器翻譯、計算社會科學",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#工作與專題報告經驗",
+    "href": "about-me-page.html#工作與專題報告經驗",
+    "title": "自我介紹與作品集",
+    "section": "工作與專題報告經驗",
+    "text": "工作與專題報告經驗\n\n\n研究所教學助理",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "ed-project.html",
+    "href": "ed-project.html",
+    "title": "許多元作品集",
+    "section": "",
+    "text": "急診室患者多元分類模型"
+  },
+  {
+    "objectID": "ed-project.html#許多元作品集",
+    "href": "ed-project.html#許多元作品集",
+    "title": "許多元作品集",
+    "section": "",
+    "text": "急診室患者多元分類模型"
+  },
+  {
+    "objectID": "ed-project.html#急診室患者多元分類模型",
+    "href": "ed-project.html#急診室患者多元分類模型",
+    "title": "許多元作品集",
+    "section": "急診室患者多元分類模型",
+    "text": "急診室患者多元分類模型\n\nPredicting Emergency Department Disposition with Statistical Learning\n\n2025 Team project (Christy Hsu | Wendy Hu) for Statistical Learning\n\n\n\n研究問題和資料"
+  },
+  {
+    "objectID": "ed-project.html#特徵重要性",
+    "href": "ed-project.html#特徵重要性",
+    "title": "許多元作品集",
+    "section": "特徵重要性",
+    "text": "特徵重要性"
+  },
+  {
+    "objectID": "about-me-slides.html#求學",
+    "href": "about-me-slides.html#求學",
+    "title": "自我介紹與作品集",
+    "section": "求學",
+    "text": "求學\n許多元\n\n\n2020-2024 國立台灣大學 歷史學士\n\n研究興趣：文化冷戰、近代早期歐洲政治思想\n相關修課：計量經濟學、機率與統計推論、線性代數、微積分、離散數學、商管程式設計\n\n\n\n\n2024-2026 喬治城大學 資料科學碩士 Georgetown University (D.C.) Data Science & Analytics\n\n修課經驗：機器學習、深度學習、資料視覺化、地理資訊系統、大數據和雲端計算、因果推論、數據倫理、自然語言處理\n研究興趣：空間資料分析、機器翻譯、計算社會科學"
+  },
+  {
+    "objectID": "about-me-slides.html#工作與專題報告經驗",
+    "href": "about-me-slides.html#工作與專題報告經驗",
+    "title": "自我介紹與作品集",
+    "section": "工作與專題報告經驗",
+    "text": "工作與專題報告經驗\n\n\n研究所教學助理"
+  },
+  {
+    "objectID": "about-me-page.html#求學路徑",
+    "href": "about-me-page.html#求學路徑",
+    "title": "自我介紹與作品集",
+    "section": "",
+    "text": "2020-2024\n國立台灣大學 歷史學士\n\n研究興趣：文化冷戰、歐洲近代早期政治思想史\n相關修課：計量經濟學、機率與統計推論、線性代數、微積分、離散數學\n\n\n\n\n\n2024-2026\n喬治城大學 資料科學碩士\nGeorgetown University | Data Science & Analytics | Washington D.C.\n\n修課經驗：機器學習、深度學習、資料視覺化、雲端計算、因果推論、自然語言處理\n研究興趣：空間資料分析、機器翻譯、計算社會科學",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-slides.html#求學路徑",
+    "href": "about-me-slides.html#求學路徑",
+    "title": "自我介紹與作品集",
+    "section": "求學路徑",
+    "text": "求學路徑\n\n\n2020-2024\n國立台灣大學 歷史學士\n\n研究興趣：文化冷戰、歐洲近代早期政治思想史\n相關修課：計量經濟學、機率與統計推論、線性代數、微積分、離散數學\n\n\n\n\n2024-2026\n喬治城大學 資料科學碩士\nGeorgetown University | Data Science & Analytics | Washington D.C.\n\n修課經驗：機器學習、深度學習、資料視覺化、雲端計算、因果推論、自然語言處理\n研究興趣：空間資料分析、機器翻譯、計算社會科學"
+  },
+  {
+    "objectID": "about-me-page.html#工作經驗與相關技能",
+    "href": "about-me-page.html#工作經驗與相關技能",
+    "title": "自我介紹與作品集",
+    "section": "工作經驗與相關技能",
+    "text": "工作經驗與相關技能\n\n\n研究所教學助理\n\nGIS for Spatial Data Science 助教：設計每週 R for GIS 程式工作坊\nData Ethics & Policy 助教：帶領資料倫理案例討論\n\n\n【程式語言】Python、R、Stata、C++\n【統計推論與機器學習】sklearn、PyTorch、Hugging Face Transformers、PyMC、sf\n【資料敘事、視覺化】ggplot、matplotlib、Quarto、Leaflet\n【大數據與雲端】AWS (EC2, S3, Athena)、Spark、DuckDB、Polars",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#專案成果分享",
+    "href": "about-me-page.html#專案成果分享",
+    "title": "自我介紹與作品集",
+    "section": "專案成果分享",
+    "text": "專案成果分享\n\n\n急診室患者分類模型 Predicting Emergency Department Disposition Using Statistical Learning\n\n基於美國疾病管制中心（CDC）急診資料中的患者族群、生醫信號、檢傷分類和病歷等約200項變數，訓練預測患者最終處置（住院、出院、轉院等）之多元分類模型。\n\n\n滿文-英文機器翻譯模型 Manchu Learning: Manchu-English Neural Machine Translation\n\n探索深度學習模型、transfer learning 和 LLM 情境學習等機器翻譯方法在瀕危語言的應用。",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-slides.html#工作經驗與相關技能",
+    "href": "about-me-slides.html#工作經驗與相關技能",
+    "title": "自我介紹與作品集",
+    "section": "工作經驗與相關技能",
+    "text": "工作經驗與相關技能\n\n\n研究所教學助理\n\nGIS for Spatial Data Science 助教：設計每週 R for GIS 程式工作坊\nData Ethics & Policy 助教：帶領資料倫理案例討論\n\n\n【程式語言】Python、R、Stata、C++\n【統計推論與機器學習】sklearn、PyTorch、Hugging Face Transformers、PyMC、sf\n【資料敘事、視覺化】ggplot、matplotlib、Quarto、Leaflet\n【大數據與雲端】AWS (EC2, S3, Athena)、Spark、DuckDB、Polars"
+  },
+  {
+    "objectID": "about-me-slides.html#專案成果分享",
+    "href": "about-me-slides.html#專案成果分享",
+    "title": "自我介紹與作品集",
+    "section": "專案成果分享",
+    "text": "專案成果分享\n\n\n急診室患者分類模型 Predicting Emergency Department Disposition Using Statistical Learning - 基於美國疾病管制中心（CDC）急診資料中的患者族群、生醫信號、檢傷分類和病歷等約200項變數，訓練預測患者最終處置（住院、出院、轉院等）之多元分類模型。\n\n滿文-英文機器翻譯模型 Manchu Learning: Manchu-English Neural Machine Translation\n\n探索深度學習模型、transfer learning 和 LLM 情境學習等機器翻譯方法在瀕危語言的應用。"
+  },
+  {
+    "objectID": "about-me-page.html#data-analytical-question",
+    "href": "about-me-page.html#data-analytical-question",
+    "title": "自我介紹與作品集",
+    "section": "Data & Analytical Question",
+    "text": "Data & Analytical Question\n\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n\n\n2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)\nFrom U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022\n\n\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · Random Forest· XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#understanding-the-outcome",
+    "href": "about-me-page.html#understanding-the-outcome",
+    "title": "自我介紹與作品集",
+    "section": "Understanding the Outcome",
+    "text": "Understanding the Outcome\n\n\n\n16 non-mutually-exclusive variables\n\n\n\n\nOverlap was structured\n\n\n\n\n\n\n16 binary variables\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy.",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#model-performance-error-analysis",
+    "href": "about-me-page.html#model-performance-error-analysis",
+    "title": "自我介紹與作品集",
+    "section": "Model Performance & Error Analysis",
+    "text": "Model Performance & Error Analysis\n\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\n\n\nXGBoost test performance: where did errors occur?\n\nTransfer was frequently classified as admit; Left was also harder to distinguish than admit or returned. A preliminary explanation attributes to class imbalance in our training data.\n\n\n\nTakeaway: The misclassification Transfer → Admit, possibly because both groups involve patients requiring continued care. The distinction may depend not only on clinical presentation but also on hospital resource differences.",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#what-did-the-model-learn",
+    "href": "about-me-page.html#what-did-the-model-learn",
+    "title": "自我介紹與作品集",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variables for transfer for example\n\n\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information.",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#滿文-英文機器翻譯",
+    "href": "about-me-page.html#滿文-英文機器翻譯",
+    "title": "自我介紹與作品集",
+    "section": "滿文-英文機器翻譯",
+    "text": "滿文-英文機器翻譯\n專案網站",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-page.html#謝謝大家",
+    "href": "about-me-page.html#謝謝大家",
+    "title": "自我介紹與作品集",
+    "section": "謝謝大家",
+    "text": "謝謝大家",
+    "crumbs": [
+      "My Projects",
+      "About Me"
+    ]
+  },
+  {
+    "objectID": "about-me-slides.html#data-analytical-question",
+    "href": "about-me-slides.html#data-analytical-question",
+    "title": "自我介紹與作品集",
+    "section": "Data & Analytical Question",
+    "text": "Data & Analytical Question\n\n\nResearch question\nCan information recorded during an emergency department visit help distinguish different patient disposition outcomes?\n\n        Patient     Triage      Clinical      Care       Hospital\n           │           │           │           │            │\n      demographics   acuity     vitals      meds /       hospital\n                     arrival    diagnosis   procedures    features\n\n2022 National Hospital Ambulatory Medical Care Survey (NHAMCS)\nFrom U.S. Centers for Disease Control and Prevention (CDC), a probablity sample representing 155M emergency room visits in the year 2022\n\n\n\n\nNHAMCS 2022 ED visit records\n\n\n→\n\n\nCandidate selection 188 variablesselected from codebook\n\n\n→\n\n\nPreprocessing Missingness · encodingimputation\n\n\n→\n\n\nStatistical learning Lasso · SVM · Random Forest· XGBoost\n\n\n\n2025 Statistical Learning course project · 5-class multiclass classification"
+  },
+  {
+    "objectID": "about-me-slides.html#understanding-the-outcome",
+    "href": "about-me-slides.html#understanding-the-outcome",
+    "title": "自我介紹與作品集",
+    "section": "Understanding the Outcome",
+    "text": "Understanding the Outcome\n\n\n16 non-mutually-exclusive variables\n\n\nOverlap was structured\n\n\n\n\n16 binary variables\nYes / NoNon-mutually-exclusive\n\n\n→\n\n\nResolve overlaps\nPredefined priority ruleselect one disposition\n\n\n→\n\n\nRestrict analytic scope\nExclude death / DOA, other,no answer, and follow-up\n\n\n→\n\n\n11 labels → 5 classes\n6,757 visitsmutually exclusive target\n\n\n\nModeling decision: This target definition was an analytical simplification for the course project, not a clinically validated disposition hierarchy."
+  },
+  {
+    "objectID": "about-me-slides.html#model-performance-error-analysis",
+    "href": "about-me-slides.html#model-performance-error-analysis",
+    "title": "自我介紹與作品集",
+    "section": "Model Performance & Error Analysis",
+    "text": "Model Performance & Error Analysis\n\n\nComparing four model families\n\nXGBoost achieved the highest accuracy and F1, while SVM had the highest reported AUC.\n\nXGBoost test performance: where did errors occur?\n\nTransfer was frequently classified as admit; Left was also harder to distinguish than admit or returned. A preliminary explanation attributes to class imbalance in our training data.\n\nTakeaway: The misclassification Transfer → Admit, possibly because both groups involve patients requiring continued care. The distinction may depend not only on clinical presentation but also on hospital resource differences."
+  },
+  {
+    "objectID": "about-me-slides.html#what-did-the-model-learn",
+    "href": "about-me-slides.html#what-did-the-model-learn",
+    "title": "自我介紹與作品集",
+    "section": "What Did the Model Learn?",
+    "text": "What Did the Model Learn?\n\n\nOverall feature importance\n\nRandom Forest\n\n\n\nImportant predictors spanned multiple aspects of the ED encounter, including vital signs, medication use, procedures, and hospital characteristics.\n\n\nFeature importance by class: coefficients of Logistic Regression\n\nMultinomial Regression with Lasso\n\n\n\nInjury-related variables dominated most classes, and are particularly notable for left and return ed dispositions, while the remaining feature mix differed by visit outcome—diagnosis variables for admission and discharge and chief complaints variables for transfer for example\n\n\n\nTakeaway: The models drew on a broad feature space, while class-specific analysis revealed that different disposition outcomes were characterized by different combinations of patient and ED information."
+  },
+  {
+    "objectID": "about-me-slides.html#滿文-英文機器翻譯",
+    "href": "about-me-slides.html#滿文-英文機器翻譯",
+    "title": "自我介紹與作品集",
+    "section": "滿文-英文機器翻譯",
+    "text": "滿文-英文機器翻譯\n專案網站"
+  },
+  {
+    "objectID": "about-me-slides.html#謝謝大家",
+    "href": "about-me-slides.html#謝謝大家",
+    "title": "自我介紹與作品集",
+    "section": "謝謝大家",
+    "text": "謝謝大家"
+  },
+  {
+    "objectID": "cloud-v2-page.html",
+    "href": "cloud-v2-page.html",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "Research question: Can shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\n\nLocal Reddit CommunitiesOnline forums associated with places\n\n\n→\n\n\nShared ContributorsAuthors active in more than one forum\n\n\n→\n\n\nPlace ConnectednessQuantified overlap between communities\n\n\n→\n\n\nGeographic PatternsDistance, state boundaries, regions\n\n\n\n\n\n\n\nDoes connectedness decline with geographic distance?\nDoes belonging to the same state matter?\nCan regions emerge from connectedness without supplying geographic coordinates to the clustering algorithm?\n\n\n\n\n\nBailey et al. (2018) measured social connectedness using Facebook friendship links and examined geographic distance, boundaries, and clustering (Bailey et al. 2018).\nMy adaptation: Reddit co-participation, not friendship, as a measure of overlapping engagement with places.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#can-online-communities-reveal-relationships-between-places",
+    "href": "cloud-v2-page.html#can-online-communities-reveal-relationships-between-places",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "Research question: Can shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\n\nLocal Reddit CommunitiesOnline forums associated with places\n\n\n→\n\n\nShared ContributorsAuthors active in more than one forum\n\n\n→\n\n\nPlace ConnectednessQuantified overlap between communities\n\n\n→\n\n\nGeographic PatternsDistance, state boundaries, regions\n\n\n\n\n\n\n\nDoes connectedness decline with geographic distance?\nDoes belonging to the same state matter?\nCan regions emerge from connectedness without supplying geographic coordinates to the clustering algorithm?\n\n\n\n\n\nBailey et al. (2018) measured social connectedness using Facebook friendship links and examined geographic distance, boundaries, and clustering (Bailey et al. 2018).\nMy adaptation: Reddit co-participation, not friendship, as a measure of overlapping engagement with places.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#from-raw-reddit-records-to-an-analytical-dataset",
+    "href": "cloud-v2-page.html#from-raw-reddit-records-to-an-analytical-dataset",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "2. From Raw Reddit Records to an Analytical Dataset",
+    "text": "2. From Raw Reddit Records to an Analytical Dataset\n\n\n\nScale and processing\n\n64.7 million submissions and comments\n4,081,891 distinct contributing authors\n619 initially selected U.S. location-based subreddits\nJune 2023–July 2024\nPySpark + AWS for large-scale processing\n\n\nThe original QMD also reports 612 in an earlier summary. Verify the intermediate filtering counts before presenting them as a finalized funnel.\n\n\n\n\nData preparation\n\nSelect and collect posts/comments from location-based subreddits.\nIdentify unique authors and the communities where they contributed.\nInspect high-activity accounts and ambiguous subreddit identities.\nIntegrate latitude/longitude from Wikipedia’s U.S. city list and Wikidata SPARQL, with manual checks.\nConstruct author overlap, community sizes, and pairwise geographic distances.\n\n\nFinal pairwise regression table: 611 communities → 186,355 possible unordered pairs, including pairs with zero shared authors.\n\n\n\n\n\nProcessing skill: The analytical dataset was constructed from raw activity records, community identifiers, and separately sourced geographic metadata—not provided as a ready-made table.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#who-connects-local-reddit-communities",
+    "href": "cloud-v2-page.html#who-connects-local-reddit-communities",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "3. Who Connects Local Reddit Communities?",
+    "text": "3. Who Connects Local Reddit Communities?\n\n\n\n\n\n\n\n\n\n\n\n\n\nKey observations\n\n69.7% contributed to only one selected subreddit.\n1,238,714 contributed to two or more.\nAmong multi-subreddit authors: median = 2, Q3 = 3, maximum = 374.\n\n\n\nOperationalization\nPosting/commenting indicates observable engagement with a local forum, possibly motivated by residence, hometown ties, travel, curiosity, nostalgia, or disagreement.\nIt does not establish residence, friendship, or like-mindedness.\n\n\n\n\nWhy it matters: Multi-community contributors generate cross-subreddit overlaps. Extremely broad participation also motivates outlier and automated-account checks.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#an-unexpected-cluster-revealed-a-data-quality-problem",
+    "href": "cloud-v2-page.html#an-unexpected-cluster-revealed-a-data-quality-problem",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "4. An Unexpected Cluster Revealed a Data Quality Problem",
+    "text": "4. An Unexpected Cluster Revealed a Data Quality Problem\n\n\n\nThe r/jersey investigation\n1. Notice: In the first clustering of all subreddits, at k = 2, r/jersey formed a cluster by itself.\n2. Investigate: I examined the community identity rather than assuming the model was wrong.\n3. Verify: r/jersey concerned Jersey, the island in the English Channel, not New Jersey or Jersey City.\n4. Correct: I excluded the geographically mismatched subreddit from the U.S. analytical sample.\n\n\n\nWhy this example matters\n\nUnsupervised EDA → anomaly → manual verification → dataset correction\n\nA name-based geographic match can be wrong. Clustering flagged the anomaly; inspecting the community confirmed the problem.\n\nIf available, replace this text area with your original preliminary k=2 clustering screenshot. Do not use the later state-only map as evidence of this earlier discovery.\n\n\n\n\n\nData validation is iterative: An unexpected analytical result can reveal a data-quality issue that was not obvious during initial collection.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#does-connectedness-decline-with-distance",
+    "href": "cloud-v2-page.html#does-connectedness-decline-with-distance",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "5. Does Connectedness Decline with Distance?",
+    "text": "5. Does Connectedness Decline with Distance?\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat to look for\n\nDo nearby communities tend to have greater shared participation?\nIs the relationship different for same-state pairs?\nAre there outliers or heavy concentration near PCI = 0?\n\n\nPCI: \\(N_{ij}/\\sqrt{|A_i||A_j|}\\), where \\(N_{ij}\\) is the number of authors shared by communities \\(i\\) and \\(j\\).\n\n\n\n\n\nThis is a descriptive PCI plot. The regression on the next slide instead models \\(\\log(N_{ij}+0.5)\\) with subreddit fixed effects.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#regression-distance-and-state-boundaries",
+    "href": "cloud-v2-page.html#regression-distance-and-state-boundaries",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "6. Regression: Distance and State Boundaries",
+    "text": "6. Regression: Distance and State Boundaries\n\\[\n\\log(N_{ij}+0.5)=\\beta_1\\log(D_{ij})+\\beta_2\\mathrm{SameState}_{ij}+\\alpha_i+\\alpha_j+\\epsilon_{ij}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nFixed-effects results\n\n\n\nPairs\nDistance\nSame state\nAdj. \\(R^2\\)\n\n\n\n\nAll\n−0.458\n+1.087\n.791\n\n\n≤200 mi\n−0.871\n+1.187\n.888\n\n\n&gt;200 mi\n−0.398\n+0.730\n.786\n\n\n\n\nAll displayed coefficients: p &lt; .001. Both subreddit fixed effects included in every model.\n\nInterpretation: Shared participation decreases with distance; the relationship is steeper locally. Same-state pairs show higher overlap after accounting for distance and subreddit effects.\n\n\n\n\nObservational associations, not causal estimates. The outcome is logged shared-author count, with 0.5 added before logging.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#can-connectedness-reconstruct-u.s.-regions",
+    "href": "cloud-v2-page.html#can-connectedness-reconstruct-u.s.-regions",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "7. Can Connectedness Reconstruct U.S. Regions?",
+    "text": "7. Can Connectedness Reconstruct U.S. Regions?\n\nState-level subset (50 states + Washington, D.C.): PCI-weighted network → Node2Vec embeddings → complete-linkage hierarchical clustering.\n\n\n\n\n\n\nHow to read this map\n\nAt k = 2, a broad East–West division appears.\nGeographic coordinates were not supplied to clustering.\nIncreasing \\(k\\) reveals finer subdivisions of the network.\n\n\nClusters summarize similarity in online connectedness profiles, not predefined Census regions or proof of direct social ties.\n\n\n\n\n\nA striking result: Broad geographic structure appears from online co-participation relationships alone.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#what-i-learned-and-what-transfers",
+    "href": "cloud-v2-page.html#what-i-learned-and-what-transfers",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "8. What I Learned — and What Transfers",
+    "text": "8. What I Learned — and What Transfers\n\n\n\nMain findings\nGeography matters: Shared Reddit participation is associated with geographic proximity and state boundaries.\nNetworks reveal structure: Connectedness-based clustering recovers recognizable broad geographic patterns.\nExploration improves quality: The r/jersey anomaly illustrates how EDA can uncover mistakes in the data itself.\n\n\n\nSkills demonstrated\n\nData processing: PySpark, AWS, large-scale record transformation\nData integration: Wikidata/Wikipedia coordinates and manual verification\nData quality: anomaly investigation, filtering, validation\nVisualization: EDA, scatterplots, model summaries, maps\nAnalysis: regression, network embeddings, hierarchical clustering\n\n\nLimitations: Reddit contributors need not be residents; co-participation is not friendship; communities differ in size and geographic scale; results are descriptive/associational.\n\n\n\n\n\nProject lesson: Transforming raw data into useful findings requires measurement choices, data validation, appropriate analysis, and clear communication.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-page.html#references",
+    "href": "cloud-v2-page.html#references",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "References",
+    "text": "References\n\n\nBailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project V2"
+    ]
+  },
+  {
+    "objectID": "cloud-v2-slides.html#can-online-communities-reveal-relationships-between-places",
+    "href": "cloud-v2-slides.html#can-online-communities-reveal-relationships-between-places",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "1. Can Online Communities Reveal Relationships Between Places?",
+    "text": "1. Can Online Communities Reveal Relationships Between Places?\nResearch question: Can shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\n\nLocal Reddit CommunitiesOnline forums associated with places\n\n\n→\n\n\nShared ContributorsAuthors active in more than one forum\n\n\n→\n\n\nPlace ConnectednessQuantified overlap between communities\n\n\n→\n\n\nGeographic PatternsDistance, state boundaries, regions\n\n\n\n\nThree questions\n\nDoes connectedness decline with geographic distance?\nDoes belonging to the same state matter?\nCan regions emerge from connectedness without supplying geographic coordinates to the clustering algorithm?\n\n\nResearch inspiration\nBailey et al. (2018) measured social connectedness using Facebook friendship links and examined geographic distance, boundaries, and clustering (Bailey et al. 2018).\nMy adaptation: Reddit co-participation, not friendship, as a measure of overlapping engagement with places."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#from-raw-reddit-records-to-an-analytical-dataset",
+    "href": "cloud-v2-slides.html#from-raw-reddit-records-to-an-analytical-dataset",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "2. From Raw Reddit Records to an Analytical Dataset",
+    "text": "2. From Raw Reddit Records to an Analytical Dataset\n\n\nScale and processing\n\n64.7 million submissions and comments\n4,081,891 distinct contributing authors\n619 initially selected U.S. location-based subreddits\nJune 2023–July 2024\nPySpark + AWS for large-scale processing\n\n\nThe original QMD also reports 612 in an earlier summary. Verify the intermediate filtering counts before presenting them as a finalized funnel.\n\n\nData preparation\n\nSelect and collect posts/comments from location-based subreddits.\nIdentify unique authors and the communities where they contributed.\nInspect high-activity accounts and ambiguous subreddit identities.\nIntegrate latitude/longitude from Wikipedia’s U.S. city list and Wikidata SPARQL, with manual checks.\nConstruct author overlap, community sizes, and pairwise geographic distances.\n\n\nFinal pairwise regression table: 611 communities → 186,355 possible unordered pairs, including pairs with zero shared authors.\n\n\n\nProcessing skill: The analytical dataset was constructed from raw activity records, community identifiers, and separately sourced geographic metadata—not provided as a ready-made table."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#who-connects-local-reddit-communities",
+    "href": "cloud-v2-slides.html#who-connects-local-reddit-communities",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "3. Who Connects Local Reddit Communities?",
+    "text": "3. Who Connects Local Reddit Communities?\n\n\n\n\n\n\n\n\n\n\n\n\nKey observations\n\n69.7% contributed to only one selected subreddit.\n1,238,714 contributed to two or more.\nAmong multi-subreddit authors: median = 2, Q3 = 3, maximum = 374.\n\nOperationalization\nPosting/commenting indicates observable engagement with a local forum, possibly motivated by residence, hometown ties, travel, curiosity, nostalgia, or disagreement.\nIt does not establish residence, friendship, or like-mindedness.\n\n\nWhy it matters: Multi-community contributors generate cross-subreddit overlaps. Extremely broad participation also motivates outlier and automated-account checks."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#an-unexpected-cluster-revealed-a-data-quality-problem",
+    "href": "cloud-v2-slides.html#an-unexpected-cluster-revealed-a-data-quality-problem",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "4. An Unexpected Cluster Revealed a Data Quality Problem",
+    "text": "4. An Unexpected Cluster Revealed a Data Quality Problem\n\n\nThe r/jersey investigation\n1. Notice: In the first clustering of all subreddits, at k = 2, r/jersey formed a cluster by itself.\n2. Investigate: I examined the community identity rather than assuming the model was wrong.\n3. Verify: r/jersey concerned Jersey, the island in the English Channel, not New Jersey or Jersey City.\n4. Correct: I excluded the geographically mismatched subreddit from the U.S. analytical sample.\n\nWhy this example matters\n\nUnsupervised EDA → anomaly → manual verification → dataset correction\n\nA name-based geographic match can be wrong. Clustering flagged the anomaly; inspecting the community confirmed the problem.\n\nIf available, replace this text area with your original preliminary k=2 clustering screenshot. Do not use the later state-only map as evidence of this earlier discovery.\n\n\n\nData validation is iterative: An unexpected analytical result can reveal a data-quality issue that was not obvious during initial collection."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#does-connectedness-decline-with-distance",
+    "href": "cloud-v2-slides.html#does-connectedness-decline-with-distance",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "5. Does Connectedness Decline with Distance?",
+    "text": "5. Does Connectedness Decline with Distance?\n\n\n\n\n\n\n\n\n\n\n\n\nWhat to look for\n\nDo nearby communities tend to have greater shared participation?\nIs the relationship different for same-state pairs?\nAre there outliers or heavy concentration near PCI = 0?\n\n\nPCI: \\(N_{ij}/\\sqrt{|A_i||A_j|}\\), where \\(N_{ij}\\) is the number of authors shared by communities \\(i\\) and \\(j\\).\n\n\n\nThis is a descriptive PCI plot. The regression on the next slide instead models \\(\\log(N_{ij}+0.5)\\) with subreddit fixed effects."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#regression-distance-and-state-boundaries",
+    "href": "cloud-v2-slides.html#regression-distance-and-state-boundaries",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "6. Regression: Distance and State Boundaries",
+    "text": "6. Regression: Distance and State Boundaries\n\\[\n\\log(N_{ij}+0.5)=\\beta_1\\log(D_{ij})+\\beta_2\\mathrm{SameState}_{ij}+\\alpha_i+\\alpha_j+\\epsilon_{ij}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nFixed-effects results\n\n\n\nPairs\nDistance\nSame state\nAdj. \\(R^2\\)\n\n\n\n\nAll\n−0.458\n+1.087\n.791\n\n\n≤200 mi\n−0.871\n+1.187\n.888\n\n\n&gt;200 mi\n−0.398\n+0.730\n.786\n\n\n\n\nAll displayed coefficients: p &lt; .001. Both subreddit fixed effects included in every model.\n\nInterpretation: Shared participation decreases with distance; the relationship is steeper locally. Same-state pairs show higher overlap after accounting for distance and subreddit effects.\n\n\nObservational associations, not causal estimates. The outcome is logged shared-author count, with 0.5 added before logging."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#can-connectedness-reconstruct-u.s.-regions",
+    "href": "cloud-v2-slides.html#can-connectedness-reconstruct-u.s.-regions",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "7. Can Connectedness Reconstruct U.S. Regions?",
+    "text": "7. Can Connectedness Reconstruct U.S. Regions?\n\nState-level subset (50 states + Washington, D.C.): PCI-weighted network → Node2Vec embeddings → complete-linkage hierarchical clustering.\n\n\n\n\n\nHow to read this map\n\nAt k = 2, a broad East–West division appears.\nGeographic coordinates were not supplied to clustering.\nIncreasing \\(k\\) reveals finer subdivisions of the network.\n\n\nClusters summarize similarity in online connectedness profiles, not predefined Census regions or proof of direct social ties.\n\n\n\nA striking result: Broad geographic structure appears from online co-participation relationships alone."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#what-i-learned-and-what-transfers",
+    "href": "cloud-v2-slides.html#what-i-learned-and-what-transfers",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "8. What I Learned — and What Transfers",
+    "text": "8. What I Learned — and What Transfers\n\n\nMain findings\nGeography matters: Shared Reddit participation is associated with geographic proximity and state boundaries.\nNetworks reveal structure: Connectedness-based clustering recovers recognizable broad geographic patterns.\nExploration improves quality: The r/jersey anomaly illustrates how EDA can uncover mistakes in the data itself.\n\nSkills demonstrated\n\nData processing: PySpark, AWS, large-scale record transformation\nData integration: Wikidata/Wikipedia coordinates and manual verification\nData quality: anomaly investigation, filtering, validation\nVisualization: EDA, scatterplots, model summaries, maps\nAnalysis: regression, network embeddings, hierarchical clustering\n\n\nLimitations: Reddit contributors need not be residents; co-participation is not friendship; communities differ in size and geographic scale; results are descriptive/associational.\n\n\n\nProject lesson: Transforming raw data into useful findings requires measurement choices, data validation, appropriate analysis, and clear communication."
+  },
+  {
+    "objectID": "cloud-v2-slides.html#references",
+    "href": "cloud-v2-slides.html#references",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "References",
+    "text": "References\n\n\nBailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259."
+  },
+  {
+    "objectID": "cloud-presentation-page.html",
+    "href": "cloud-presentation-page.html",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "611 U.S. location-based subreddits\n14 months of observation (June 2023 ~ July 2024)\n64.7M Reddit posts & comments\n4.1M unique contributors\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\n\n\nWhat is a “location-based subreddit”?\n\n\n\n\n\nLocation-based subreddits are online communities organized around physical places.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-page.html#does-online-connectedness-reflect-geographic-proximity",
+    "href": "cloud-presentation-page.html#does-online-connectedness-reflect-geographic-proximity",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "Location-based subreddits provide an opportunity to examine how online participation relates to physical geography.\n\n\n\n\nHow much do two local Reddit communities overlap?\n\nIdentify contributors who post or comment in each subreddit.\nCount the authors participating in both communities.\nAdjust for differences in community size.\n\n\nMeasure: Shared contributors between pairs of location-based subreddits.\n\n\n\n\n\nHow physically close are the places represented by these communities?\n\nIdentify the geographic location associated with each subreddit.\nObtain latitude and longitude.\nCalculate geographic distance between pairs of locations.\n\n\nMeasure: Pairwise geographic distance (miles).\n\n\n\n\n\nResearch Question: Are geographically closer places also more connected through shared online participation?",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-slides.html#does-online-connectedness-reflect-geographic-proximity",
+    "href": "cloud-presentation-slides.html#does-online-connectedness-reflect-geographic-proximity",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Does Online Connectedness Reflect Geographic Proximity?",
+    "text": "Does Online Connectedness Reflect Geographic Proximity?\nLocation-based subreddits provide an opportunity to examine how online participation relates to physical geography.\n\n\nOnline Connectedness\nHow much do two local Reddit communities overlap?\n\nIdentify contributors who post or comment in each subreddit.\nCount the authors participating in both communities.\nAdjust for differences in community size.\n\n\nMeasure: Shared contributors between pairs of location-based subreddits.\n\n\nGeographic Proximity\nHow physically close are the places represented by these communities?\n\nIdentify the geographic location associated with each subreddit.\nObtain latitude and longitude.\nCalculate geographic distance between pairs of locations.\n\n\nMeasure: Pairwise geographic distance (miles).\n\n\n\nResearch Question: Are geographically closer places also more connected through shared online participation?"
+  },
+  {
+    "objectID": "cloud-presentation-page.html#to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity",
+    "href": "cloud-presentation-page.html#to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "",
+    "text": "611 U.S. location-based subreddits\n14 months of observation (June 2023 ~ July 2024)\n64.7M Reddit posts & comments\n4.1M unique contributors\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\n\n\nWhat is a “location-based subreddit”?\n\n\n\n\n\nLocation-based subreddits are online communities organized around physical places.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-slides.html#to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity",
+    "href": "cloud-presentation-slides.html#to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "To What Extent Does Online Connectedness Between Places Reflect Geographic Proximity?",
+    "text": "To What Extent Does Online Connectedness Between Places Reflect Geographic Proximity?\n\n\nData\n\n611 U.S. location-based subreddits\n14 months of observation (June 2023 ~ July 2024)\n64.7M Reddit posts & comments\n4.1M unique contributors\nData-intensive analysis with PySpark + AWS\n\n\n\n\n\n\n\n\n\nWhat is a “location-based subreddit”?\n\n\nLocation-based subreddits are online communities organized around physical places."
+  },
+  {
+    "objectID": "cloud-presentation-page.html#from-reddit-activity-to-place-connectedness",
+    "href": "cloud-presentation-page.html#from-reddit-activity-to-place-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Reddit Activity to Place Connectedness",
+    "text": "From Reddit Activity to Place Connectedness\n\n\n\nUnit of Analysis\nPairs of subreddits\n\n186,355 possible subreddit pairs\n\n\n\nGeographic Augmentation\nConnect online communities with their physical counterparts\n\nIntegrating geographic coordinates (latitude and longitude)\nState-level shapefile (Census Bureau TIGER/Line)\n\n\n\n\nMeasuring Shared Participation\nFor each pair of subreddits \\(i\\) and \\(j\\):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere \\(A_i\\) and \\(A_j\\) are their sets of contributing authors.\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\n\n\n\n\n\n\nExample Data Frame\n\n\n\n\n\n# A tibble: 5 × 6\n  sr1        sr2         n_shared_authors    pci geo_dist_mi same_state\n  &lt;chr&gt;      &lt;chr&gt;                  &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt; &lt;lgl&gt;     \n1 newark     newjersey               1492 0.0887       49.7  TRUE      \n2 jerseycity newark                   661 0.0680        5.80 TRUE      \n3 newark     nyc                      435 0.0229       12.7  FALSE     \n4 hoboken    newark                   287 0.0427        7.40 TRUE      \n5 newark     southjersey              258 0.0275       95.1  TRUE",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-slides.html#from-reddit-activity-to-place-connectedness",
+    "href": "cloud-presentation-slides.html#from-reddit-activity-to-place-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Reddit Activity to Place Connectedness",
+    "text": "From Reddit Activity to Place Connectedness\n\n\nUnit of Analysis\nPairs of subreddits\n\n186,355 possible subreddit pairs\n\nGeographic Augmentation\nConnect online communities with their physical counterparts\n\nIntegrating geographic coordinates (latitude and longitude)\nState-level shapefile (Census Bureau TIGER/Line)\n\n\nMeasuring Shared Participation\nFor each pair of subreddits \\(i\\) and \\(j\\):\n\\[\nN_{ij} = |A_i \\cap A_j|\n\\]\nwhere \\(A_i\\) and \\(A_j\\) are their sets of contributing authors.\n\\[\nPCI_{ij} =\n\\frac{N_{ij}}\n{\\sqrt{|A_i||A_j|}}\n\\]\nPlace Connectedness Index (pci) measures shared participation relative to the sizes of the two communities.\n\n\n\nReddit Activity Posts and comments from location-based communities\n\n\n→\n\n\nAuthor Sets Unique contributors to each subreddit\n\n\n→\n\n\nSubreddit Pairs Count shared contributors between communities\n\n\n→\n\n\nConnectedness Raw overlap + size-adjusted PCI\n\n\n\n\n\n\n\n\n\n\nExample Data Frame\n\n\n# A tibble: 5 × 6\n  sr1        sr2         n_shared_authors    pci geo_dist_mi same_state\n  &lt;chr&gt;      &lt;chr&gt;                  &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt; &lt;lgl&gt;     \n1 newark     newjersey               1492 0.0887       49.7  TRUE      \n2 jerseycity newark                   661 0.0680        5.80 TRUE      \n3 newark     nyc                      435 0.0229       12.7  FALSE     \n4 hoboken    newark                   287 0.0427        7.40 TRUE      \n5 newark     southjersey              258 0.0275       95.1  TRUE"
+  },
+  {
+    "objectID": "cloud-presentation-page.html#research-question-and-model-selection",
+    "href": "cloud-presentation-page.html#research-question-and-model-selection",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Research Question and Model Selection",
+    "text": "Research Question and Model Selection\n\n\n\nResearch Question\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\nDoes connectedness decline with geographic distance?\nDoes the strength of this relationship vary with distance?\nDoes being in the same state matter beyond distance?\nCan connectedness alone recover recognizable geographic regions?\n\n\n\n\nResearch Inspiration\nBailey et al. (2018) used Facebook friendship networks to measure social connectedness between places, relating it to geographic distance and political boundaries(Bailey et al. 2018).\nTheir connectedness-based clustering further demonstrated how network relationships can reveal geographic regions.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-slides.html#research-question-and-model-selection",
+    "href": "cloud-presentation-slides.html#research-question-and-model-selection",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Research Question and Model Selection",
+    "text": "Research Question and Model Selection\n\n\nResearch Question\nCan shared participation in location-based Reddit communities reveal how places in the U.S. are connected?\n\nDoes connectedness decline with geographic distance?\nDoes the strength of this relationship vary with distance?\nDoes being in the same state matter beyond distance?\nCan connectedness alone recover recognizable geographic regions?\n\n\nResearch Inspiration\nBailey et al. (2018) used Facebook friendship networks to measure social connectedness between places, relating it to geographic distance and political boundaries(Bailey et al. 2018).\nTheir connectedness-based clustering further demonstrated how network relationships can reveal geographic regions."
+  },
+  {
+    "objectID": "cloud-presentation-page.html#geography-strongly-predicts-online-connectedness",
+    "href": "cloud-presentation-page.html#geography-strongly-predicts-online-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Geography Strongly Predicts Online Connectedness",
+    "text": "Geography Strongly Predicts Online Connectedness\n\nPairwise Regression\nI modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.\n\\[\n\\log(N_{ij} + 0.5)\n=\n\\beta_1 \\log(D_{ij})\n+\n\\beta_2 \\text{SameState}_{ij}\n+\n\\alpha_i + \\alpha_j\n+\n\\epsilon_{ij}\n\\]\n\n\n\n\nFixed-Effects Results\n\n\n\n\nModel\nDistance\nSame State\nAdj. \\(R^2\\)\n\n\n\n\nAll pairs\n−0.458*\n+1.087*\n0.791\n\n\n≤ 200 miles\n−0.871*\n+1.187*\n0.888\n\n\n&gt; 200 miles\n−0.398*\n+0.730*\n0.786\n\n\n\n\n\n\\(*\\) \\(p &lt; .001\\). Subreddit fixed effects included in all models.\n\n\n\n\nWhat Do We Learn?\nConnectedness decreases with distance\nConditional on distance, connectedness is stronger within states\nGeographic distance and state boundaries can explain a part of the variations on patterns of shared online participation.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-slides.html#geography-strongly-predicts-online-connectedness",
+    "href": "cloud-presentation-slides.html#geography-strongly-predicts-online-connectedness",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "Geography Strongly Predicts Online Connectedness",
+    "text": "Geography Strongly Predicts Online Connectedness\nPairwise Regression\nI modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.\n\\[\n\\log(N_{ij} + 0.5)\n=\n\\beta_1 \\log(D_{ij})\n+\n\\beta_2 \\text{SameState}_{ij}\n+\n\\alpha_i + \\alpha_j\n+\n\\epsilon_{ij}\n\\]\n\n\nFixed-Effects Results\n\n\n\n\nModel\nDistance\nSame State\nAdj. \\(R^2\\)\n\n\n\n\nAll pairs\n−0.458*\n+1.087*\n0.791\n\n\n≤ 200 miles\n−0.871*\n+1.187*\n0.888\n\n\n&gt; 200 miles\n−0.398*\n+0.730*\n0.786\n\n\n\n\n\n\\(*\\) \\(p &lt; .001\\). Subreddit fixed effects included in all models.\n\n\nWhat Do We Learn?\nConnectedness decreases with distance\nConditional on distance, connectedness is stronger within states\nGeographic distance and state boundaries can explain a part of the variations on patterns of shared online participation.\n\n\n\n\n\nBailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. “Social Connectedness: Measurement, Determinants, and Effects.” Journal of Economic Perspectives 32 (3): 259–80. https://doi.org/10.1257/jep.32.3.259."
+  },
+  {
+    "objectID": "cloud-presentation-page.html#from-online-communities-to-relationships-between-places",
+    "href": "cloud-presentation-page.html#from-online-communities-to-relationships-between-places",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Online Communities to Relationships Between Places",
+    "text": "From Online Communities to Relationships Between Places\n\n\nReddit Users Participate across multiple local communities\n\n\n→\n\n\nShared Participation Connect pairs of location-based subreddits\n\n\n→\n\n\nPlace Connectedness Measure pairwise relationships\n\n\n→\n\n\nGeographic Structure? Distance, borders, and regions\n\n\n\n\n\nResearch Question\n\nDoes connectedness decline with geographic distance?\nDoes the strength of this relationship vary with distance?\nDoes being in the same state matter beyond distance?\nCan connectedness alone recover recognizable geographic regions?\n\n\n\n\nResearch Inspiration\nBailey et al. (2018) used Facebook friendship networks to measure social connectedness between places, relating it to geographic distance and political boundaries(Bailey et al. 2018).\nTheir connectedness-based clustering further demonstrated how network relationships can reveal geographic regions.",
+    "crumbs": [
+      "My Projects",
+      "Cloud Project Presentation"
+    ]
+  },
+  {
+    "objectID": "cloud-presentation-slides.html#from-online-communities-to-relationships-between-places",
+    "href": "cloud-presentation-slides.html#from-online-communities-to-relationships-between-places",
+    "title": "Distance vs. Connectedness: Location-based Reddit Forums Analyzed",
+    "section": "From Online Communities to Relationships Between Places",
+    "text": "From Online Communities to Relationships Between Places\n\n\nReddit Users Participate across multiple local communities\n\n\n→\n\n\nShared Participation Connect pairs of location-based subreddits\n\n\n→\n\n\nPlace Connectedness Measure pairwise relationships\n\n\n→\n\n\nGeographic Structure? Distance, borders, and regions\n\n\n\n\nResearch Question\n\nDoes connectedness decline with geographic distance?\nDoes the strength of this relationship vary with distance?\nDoes being in the same state matter beyond distance?\nCan connectedness alone recover recognizable geographic regions?\n\n\nResearch Inspiration\nBailey et al. (2018) used Facebook friendship networks to measure social connectedness between places, relating it to geographic distance and political boundaries(Bailey et al. 2018).\nTheir connectedness-based clustering further demonstrated how network relationships can reveal geographic regions."
   }
 ]

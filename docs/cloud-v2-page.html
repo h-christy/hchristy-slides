@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christy Hsu">
+
+<title>Distance vs.&nbsp;Connectedness: Location-based Reddit Forums Analyzed – pred-ed</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://github.com/h-christy">My Projects</a></li><li class="breadcrumb-item"><a href="./cloud-v2-page.html">Cloud Project V2</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Christy Hsu</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">My Projects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/h-christy" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Github Portfolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ed-project-en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ED Project slides (en)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cloud-page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cloud-v2-page.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Cloud Project V2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about-me-page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Me</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p>2026-09-15</p>
+</div></div></nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#can-online-communities-reveal-relationships-between-places" id="toc-can-online-communities-reveal-relationships-between-places" class="nav-link active" data-scroll-target="#can-online-communities-reveal-relationships-between-places">1. Can Online Communities Reveal Relationships Between Places?</a></li>
+  <li><a href="#from-raw-reddit-records-to-an-analytical-dataset" id="toc-from-raw-reddit-records-to-an-analytical-dataset" class="nav-link" data-scroll-target="#from-raw-reddit-records-to-an-analytical-dataset">2. From Raw Reddit Records to an Analytical Dataset</a></li>
+  <li><a href="#who-connects-local-reddit-communities" id="toc-who-connects-local-reddit-communities" class="nav-link" data-scroll-target="#who-connects-local-reddit-communities">3. Who Connects Local Reddit Communities?</a></li>
+  <li><a href="#an-unexpected-cluster-revealed-a-data-quality-problem" id="toc-an-unexpected-cluster-revealed-a-data-quality-problem" class="nav-link" data-scroll-target="#an-unexpected-cluster-revealed-a-data-quality-problem">4. An Unexpected Cluster Revealed a Data Quality Problem</a></li>
+  <li><a href="#does-connectedness-decline-with-distance" id="toc-does-connectedness-decline-with-distance" class="nav-link" data-scroll-target="#does-connectedness-decline-with-distance">5. Does Connectedness Decline with Distance?</a></li>
+  <li><a href="#regression-distance-and-state-boundaries" id="toc-regression-distance-and-state-boundaries" class="nav-link" data-scroll-target="#regression-distance-and-state-boundaries">6. Regression: Distance and State Boundaries</a></li>
+  <li><a href="#can-connectedness-reconstruct-u.s.-regions" id="toc-can-connectedness-reconstruct-u.s.-regions" class="nav-link" data-scroll-target="#can-connectedness-reconstruct-u.s.-regions">7. Can Connectedness Reconstruct U.S. Regions?</a></li>
+  <li><a href="#what-i-learned-and-what-transfers" id="toc-what-i-learned-and-what-transfers" class="nav-link" data-scroll-target="#what-i-learned-and-what-transfers">8. What I Learned — and What Transfers</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cloud-v2-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://github.com/h-christy">My Projects</a></li><li class="breadcrumb-item"><a href="./cloud-v2-page.html">Cloud Project V2</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Distance vs.&nbsp;Connectedness: Location-based Reddit Forums Analyzed</h1>
+<p class="subtitle lead">Project Presentation</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christy Hsu </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="can-online-communities-reveal-relationships-between-places" class="level2">
+<h2 class="anchored" data-anchor-id="can-online-communities-reveal-relationships-between-places">1. Can Online Communities Reveal Relationships Between Places?</h2>
+<p><strong>Research question:</strong> Can shared participation in location-based Reddit communities reveal how places in the U.S. are connected?</p>
+<div class="flow compact">
+<div class="flow-step">
+<strong>Local Reddit Communities</strong><small>Online forums associated with places</small>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step">
+<strong>Shared Contributors</strong><small>Authors active in more than one forum</small>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step">
+<strong>Place Connectedness</strong><small>Quantified overlap between communities</small>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step accent">
+<strong>Geographic Patterns</strong><small>Distance, state boundaries, regions</small>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<section id="three-questions" class="level3">
+<h3 class="anchored" data-anchor-id="three-questions">Three questions</h3>
+<ul>
+<li>Does connectedness <strong>decline with geographic distance</strong>?</li>
+<li>Does belonging to the <strong>same state</strong> matter?</li>
+<li>Can <strong>regions emerge</strong> from connectedness without supplying geographic coordinates to the clustering algorithm?</li>
+</ul>
+</section>
+</div><div class="column" style="width:45%;">
+<section id="research-inspiration" class="level3">
+<h3 class="anchored" data-anchor-id="research-inspiration">Research inspiration</h3>
+<p>Bailey et al.&nbsp;(2018) measured social connectedness using <strong>Facebook friendship links</strong> and examined geographic distance, boundaries, and clustering <span class="citation" data-cites="baileySocialConnectednessMeasurement2018">(<a href="#ref-baileySocialConnectednessMeasurement2018" role="doc-biblioref">Bailey et al. 2018</a>)</span>.</p>
+<p><strong>My adaptation:</strong> Reddit <strong>co-participation</strong>, not friendship, as a measure of overlapping engagement with places.</p>
+</section>
+</div>
+</div>
+</section>
+<section id="from-raw-reddit-records-to-an-analytical-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="from-raw-reddit-records-to-an-analytical-dataset">2. From Raw Reddit Records to an Analytical Dataset</h2>
+<div class="columns">
+<div class="column" style="width:43%;">
+<section id="scale-and-processing" class="level3">
+<h3 class="anchored" data-anchor-id="scale-and-processing">Scale and processing</h3>
+<ul>
+<li><strong>64.7 million</strong> submissions and comments</li>
+<li><strong>4,081,891</strong> distinct contributing authors</li>
+<li><strong>619</strong> initially selected U.S. location-based subreddits</li>
+<li><strong>June 2023–July 2024</strong></li>
+<li><strong>PySpark + AWS</strong> for large-scale processing</li>
+</ul>
+<div class="small muted">
+<p>The original QMD also reports 612 in an earlier summary. Verify the intermediate filtering counts before presenting them as a finalized funnel.</p>
+</div>
+</section>
+</div><div class="column" style="width:57%;">
+<section id="data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation">Data preparation</h3>
+<ol type="1">
+<li>Select and collect posts/comments from location-based subreddits.</li>
+<li>Identify unique authors and the communities where they contributed.</li>
+<li>Inspect high-activity accounts and ambiguous subreddit identities.</li>
+<li>Integrate <strong>latitude/longitude</strong> from Wikipedia’s U.S. city list and <strong>Wikidata SPARQL</strong>, with manual checks.</li>
+<li>Construct author overlap, community sizes, and pairwise geographic distances.</li>
+</ol>
+<div class="method-note">
+<p><strong>Final pairwise regression table:</strong> 611 communities → <strong>186,355 possible unordered pairs</strong>, including pairs with zero shared authors.</p>
+</div>
+</section>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>Processing skill:</strong> The analytical dataset was constructed from raw activity records, community identifiers, and separately sourced geographic metadata—not provided as a ready-made table.</p>
+</div>
+</section>
+<section id="who-connects-local-reddit-communities" class="level2">
+<h2 class="anchored" data-anchor-id="who-connects-local-reddit-communities">3. Who Connects Local Reddit Communities?</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cloud-project-v2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<section id="key-observations" class="level3">
+<h3 class="anchored" data-anchor-id="key-observations">Key observations</h3>
+<ul>
+<li><strong>69.7%</strong> contributed to only one selected subreddit.</li>
+<li><strong>1,238,714</strong> contributed to <strong>two or more</strong>.</li>
+<li>Among multi-subreddit authors: <strong>median = 2</strong>, <strong>Q3 = 3</strong>, <strong>maximum = 374</strong>.</li>
+</ul>
+</section>
+<section id="operationalization" class="level3">
+<h3 class="anchored" data-anchor-id="operationalization">Operationalization</h3>
+<p>Posting/commenting indicates <strong>observable engagement</strong> with a local forum, possibly motivated by residence, hometown ties, travel, curiosity, nostalgia, or disagreement.</p>
+<p>It does <strong>not</strong> establish residence, friendship, or like-mindedness.</p>
+</section>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>Why it matters:</strong> Multi-community contributors generate cross-subreddit overlaps. Extremely broad participation also motivates outlier and automated-account checks.</p>
+</div>
+</section>
+<section id="an-unexpected-cluster-revealed-a-data-quality-problem" class="level2">
+<h2 class="anchored" data-anchor-id="an-unexpected-cluster-revealed-a-data-quality-problem">4. An Unexpected Cluster Revealed a Data Quality Problem</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<section id="the-rjersey-investigation" class="level3">
+<h3 class="anchored" data-anchor-id="the-rjersey-investigation">The <code>r/jersey</code> investigation</h3>
+<p><strong>1. Notice:</strong> In the <strong>first clustering of all subreddits</strong>, at <strong>k = 2</strong>, <code>r/jersey</code> formed a cluster <strong>by itself</strong>.</p>
+<p><strong>2. Investigate:</strong> I examined the community identity rather than assuming the model was wrong.</p>
+<p><strong>3. Verify:</strong> <code>r/jersey</code> concerned <strong>Jersey, the island in the English Channel</strong>, not New Jersey or Jersey City.</p>
+<p><strong>4. Correct:</strong> I excluded the geographically mismatched subreddit from the U.S. analytical sample.</p>
+</section>
+</div><div class="column" style="width:42%;">
+<section id="why-this-example-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-example-matters">Why this example matters</h3>
+<div class="method-note">
+<p><strong>Unsupervised EDA → anomaly → manual verification → dataset correction</strong></p>
+</div>
+<p>A name-based geographic match can be wrong. Clustering <strong>flagged</strong> the anomaly; inspecting the community <strong>confirmed</strong> the problem.</p>
+<div class="small muted">
+<p>If available, replace this text area with your original preliminary k=2 clustering screenshot. Do not use the later state-only map as evidence of this earlier discovery.</p>
+</div>
+</section>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>Data validation is iterative:</strong> An unexpected analytical result can reveal a data-quality issue that was not obvious during initial collection.</p>
+</div>
+</section>
+<section id="does-connectedness-decline-with-distance" class="level2">
+<h2 class="anchored" data-anchor-id="does-connectedness-decline-with-distance">5. Does Connectedness Decline with Distance?</h2>
+<div class="columns">
+<div class="column" style="width:68%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cloud-project-v2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Scatterplot of Place Connectedness Index against geographic distance, grouped by same-state status." width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:32%;">
+<section id="what-to-look-for" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-look-for">What to look for</h3>
+<ul>
+<li>Do nearby communities tend to have <strong>greater shared participation</strong>?</li>
+<li>Is the relationship different for <strong>same-state pairs</strong>?</li>
+<li>Are there outliers or heavy concentration near <strong>PCI = 0</strong>?</li>
+</ul>
+<div class="method-note">
+<p><strong>PCI:</strong> <span class="math inline">\(N_{ij}/\sqrt{|A_i||A_j|}\)</span>, where <span class="math inline">\(N_{ij}\)</span> is the number of authors shared by communities <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
+</div>
+</section>
+</div>
+</div>
+<div class="small muted">
+<p>This is a <strong>descriptive PCI plot</strong>. The regression on the next slide instead models <span class="math inline">\(\log(N_{ij}+0.5)\)</span> with subreddit fixed effects.</p>
+</div>
+</section>
+<section id="regression-distance-and-state-boundaries" class="level2">
+<h2 class="anchored" data-anchor-id="regression-distance-and-state-boundaries">6. Regression: Distance and State Boundaries</h2>
+<p><span class="math display">\[
+\log(N_{ij}+0.5)=\beta_1\log(D_{ij})+\beta_2\mathrm{SameState}_{ij}+\alpha_i+\alpha_j+\epsilon_{ij}
+\]</span></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cloud-project-v2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<section id="fixed-effects-results" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-effects-results">Fixed-effects results</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Pairs</th>
+<th style="text-align: right;">Distance</th>
+<th style="text-align: right;">Same state</th>
+<th style="text-align: right;">Adj. <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All</td>
+<td style="text-align: right;">−0.458</td>
+<td style="text-align: right;">+1.087</td>
+<td style="text-align: right;">.791</td>
+</tr>
+<tr class="even">
+<td>≤200 mi</td>
+<td style="text-align: right;">−0.871</td>
+<td style="text-align: right;">+1.187</td>
+<td style="text-align: right;">.888</td>
+</tr>
+<tr class="odd">
+<td>&gt;200 mi</td>
+<td style="text-align: right;">−0.398</td>
+<td style="text-align: right;">+0.730</td>
+<td style="text-align: right;">.786</td>
+</tr>
+</tbody>
+</table>
+<div class="small">
+<p>All displayed coefficients: <strong>p &lt; .001</strong>. Both subreddit fixed effects included in every model.</p>
+</div>
+<p><strong>Interpretation:</strong> Shared participation decreases with distance; the relationship is steeper locally. Same-state pairs show higher overlap after accounting for distance and subreddit effects.</p>
+</section>
+</div>
+</div>
+<div class="small muted">
+<p>Observational associations, not causal estimates. The outcome is logged shared-author count, with 0.5 added before logging.</p>
+</div>
+</section>
+<section id="can-connectedness-reconstruct-u.s.-regions" class="level2">
+<h2 class="anchored" data-anchor-id="can-connectedness-reconstruct-u.s.-regions">7. Can Connectedness Reconstruct U.S. Regions?</h2>
+<div class="small">
+<p><strong>State-level subset (50 states + Washington, D.C.)</strong>: PCI-weighted network → Node2Vec embeddings → complete-linkage hierarchical clustering.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:74%;">
+<p><img src="data/img/m115-complete51-k15-labeled.gif" class="img-fluid" alt="Map of hierarchical clustering among U.S. state-level subreddit embeddings learned from shared-author connectedness."></p>
+</div><div class="column" style="width:26%;">
+<section id="how-to-read-this-map" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-read-this-map">How to read this map</h3>
+<ul>
+<li>At <strong>k = 2</strong>, a broad <strong>East–West division</strong> appears.</li>
+<li>Geographic coordinates were <strong>not supplied to clustering</strong>.</li>
+<li>Increasing <span class="math inline">\(k\)</span> reveals finer subdivisions of the network.</li>
+</ul>
+<div class="method-note">
+<p>Clusters summarize <strong>similarity in online connectedness profiles</strong>, not predefined Census regions or proof of direct social ties.</p>
+</div>
+</section>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>A striking result:</strong> Broad geographic structure appears from online co-participation relationships alone.</p>
+</div>
+</section>
+<section id="what-i-learned-and-what-transfers" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-learned-and-what-transfers">8. What I Learned — and What Transfers</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<section id="main-findings" class="level3">
+<h3 class="anchored" data-anchor-id="main-findings">Main findings</h3>
+<p><strong>Geography matters:</strong> Shared Reddit participation is associated with geographic proximity and state boundaries.</p>
+<p><strong>Networks reveal structure:</strong> Connectedness-based clustering recovers recognizable broad geographic patterns.</p>
+<p><strong>Exploration improves quality:</strong> The <code>r/jersey</code> anomaly illustrates how EDA can uncover mistakes in the data itself.</p>
+</section>
+</div><div class="column" style="width:45%;">
+<section id="skills-demonstrated" class="level3">
+<h3 class="anchored" data-anchor-id="skills-demonstrated">Skills demonstrated</h3>
+<ul>
+<li><strong>Data processing:</strong> PySpark, AWS, large-scale record transformation</li>
+<li><strong>Data integration:</strong> Wikidata/Wikipedia coordinates and manual verification</li>
+<li><strong>Data quality:</strong> anomaly investigation, filtering, validation</li>
+<li><strong>Visualization:</strong> EDA, scatterplots, model summaries, maps</li>
+<li><strong>Analysis:</strong> regression, network embeddings, hierarchical clustering</li>
+</ul>
+<div class="method-note">
+<p><strong>Limitations:</strong> Reddit contributors need not be residents; co-participation is not friendship; communities differ in size and geographic scale; results are descriptive/associational.</p>
+</div>
+</section>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>Project lesson:</strong> Transforming raw data into useful findings requires measurement choices, data validation, appropriate analysis, and clear communication.</p>
+</div>
+</section>
+<section id="references" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-baileySocialConnectednessMeasurement2018" class="csl-entry" role="listitem">
+Bailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. <span>“Social <span>Connectedness</span>: <span>Measurement</span>, <span>Determinants</span>, and <span>Effects</span>.”</span> <em>Journal of Economic Perspectives</em> 32 (3): 259–80. <a href="https://doi.org/10.1257/jep.32.3.259">https://doi.org/10.1257/jep.32.3.259</a>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
