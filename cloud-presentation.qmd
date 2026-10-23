@@ -366,6 +366,7 @@ A name-based geographic match can be wrong. Clustering **flagged** the anomaly; 
 
 ## Additional Examples
 
+![](data/img/m115-complete51-k9.png)
 
 
 ![](data/img/m115-newjersey-choropleth.png)
