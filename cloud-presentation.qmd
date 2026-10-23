@@ -17,8 +17,8 @@ format:
     slide-number: true
     scrollable: true
     center: false
-    width: 1080
-    height: 750
+    width: 1180
+    height: 720
     code:
       echo: true
       eval: true
@@ -197,7 +197,7 @@ $$
 
 ::: {.column width="42%"}
 
-### Research Inspiration
+::: {.callout-note title='Inspiration' appearance="simple" collapse="true"}
 
 Bailey et al. (2018) used Facebook friendship networks to measure **social connectedness between places**, relating it to geographic distance and political boundaries[@baileySocialConnectednessMeasurement2018].
 
@@ -207,14 +207,17 @@ Their connectedness-based clustering further demonstrated how network relationsh
 
 :::
 
+:::
 
-## Does Connectedness Decline With Geographic Distance?
+
+
+## **Does Connectedness Decline With Geographic Distance?**
 
 ### Pairwise Regression
 
-I modeled the number of shared authors between each pair of location-based
-subreddits as a function of their geographic relationship.
+Modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.
 
+::: {.regression-equation}
 $$
 \log(N_{ij} + 0.5)
 =
@@ -226,14 +229,15 @@ $$
 +
 \epsilon_{ij}
 $$
+:::
 
 ::: {.columns}
 
-::: {.column width="55%"}
+::: {.column width="60%"}
 
 ### Fixed-Effects Results
 
-::: {.small-table}
+::: {.regression-table}
 
 | Model | Distance | Same State | Adj. $R^2$ |
 |---|---:|---:|---:|
@@ -244,24 +248,25 @@ $$
 :::
 
 ::: {.tiny}
-$*$ $p < .001$. Subreddit fixed effects included in all models.
+*All coefficients $p < .001$. Subreddit fixed effects included.
 :::
 
 :::
 
-::: {.column width="45%"}
+::: {.column width="40%"}
 
 ### What Do We Learn?
 
-**Connectedness decreases with distance**
+**Connectedness decreases with distance.**
 
-**Conditional on distance, connectedness is stronger within states**
+**Connectedness is stronger within states, conditional on distance.**
 
-Geographic distance and state boundaries can explain some of the variation in patterns of shared online participation
+Geographic distance and state boundaries help explain variation in shared online participation.
+
+:::
 
 :::
 
-:::
 
 ## Can Connectedness Reconstruct Geographic Regions?
 

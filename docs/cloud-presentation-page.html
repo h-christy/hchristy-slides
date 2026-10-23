@@ -251,10 +251,11 @@ window.Quarto = {
   <li><a href="#to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity" id="toc-to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity" class="nav-link active" data-scroll-target="#to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity">To What Extent Does Online Connectedness Between Places Reflect Geographic Proximity?</a></li>
   <li><a href="#from-reddit-activity-to-place-connectedness" id="toc-from-reddit-activity-to-place-connectedness" class="nav-link" data-scroll-target="#from-reddit-activity-to-place-connectedness">From Reddit Activity to Place Connectedness</a></li>
   <li><a href="#from-online-communities-to-relationships-between-places" id="toc-from-online-communities-to-relationships-between-places" class="nav-link" data-scroll-target="#from-online-communities-to-relationships-between-places">From Online Communities to Relationships Between Places</a></li>
-  <li><a href="#does-connectedness-decline-with-geographic-distance" id="toc-does-connectedness-decline-with-geographic-distance" class="nav-link" data-scroll-target="#does-connectedness-decline-with-geographic-distance">Does Connectedness Decline With Geographic Distance?</a></li>
+  <li><a href="#does-connectedness-decline-with-geographic-distance" id="toc-does-connectedness-decline-with-geographic-distance" class="nav-link" data-scroll-target="#does-connectedness-decline-with-geographic-distance"><strong>Does Connectedness Decline With Geographic Distance?</strong></a></li>
   <li><a href="#can-connectedness-reconstruct-geographic-regions" id="toc-can-connectedness-reconstruct-geographic-regions" class="nav-link" data-scroll-target="#can-connectedness-reconstruct-geographic-regions">Can Connectedness Reconstruct Geographic Regions?</a></li>
   <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you!</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#additional-examples" id="toc-additional-examples" class="nav-link" data-scroll-target="#additional-examples">Additional Examples</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cloud-presentation-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -444,19 +445,32 @@ Example Data Frame
 </ul>
 </section>
 </div><div class="column" style="width:42%;">
-<section id="research-inspiration" class="level3">
-<h3 class="anchored" data-anchor-id="research-inspiration">Research Inspiration</h3>
+<div class="callout callout-style-simple callout-note callout-titled" title="Inspiration">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Inspiration
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Bailey et al.&nbsp;(2018) used Facebook friendship networks to measure <strong>social connectedness between places</strong>, relating it to geographic distance and political boundaries<span class="citation" data-cites="baileySocialConnectednessMeasurement2018">(<a href="#ref-baileySocialConnectednessMeasurement2018" role="doc-biblioref">Bailey et al. 2018</a>)</span>.</p>
 <p>Their connectedness-based clustering further demonstrated how network relationships can reveal geographic regions.</p>
-</section>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
 <section id="does-connectedness-decline-with-geographic-distance" class="level2">
-<h2 class="anchored" data-anchor-id="does-connectedness-decline-with-geographic-distance">Does Connectedness Decline With Geographic Distance?</h2>
+<h2 class="anchored" data-anchor-id="does-connectedness-decline-with-geographic-distance"><strong>Does Connectedness Decline With Geographic Distance?</strong></h2>
 <section id="pairwise-regression" class="level3">
 <h3 class="anchored" data-anchor-id="pairwise-regression">Pairwise Regression</h3>
-<p>I modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.</p>
+<p>Modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.</p>
+<div class="regression-equation">
 <p><span class="math display">\[
 \log(N_{ij} + 0.5)
 =
@@ -468,12 +482,13 @@ Example Data Frame
 +
 \epsilon_{ij}
 \]</span></p>
+</div>
 </section>
 <div class="columns">
-<div class="column" style="width:55%;">
+<div class="column" style="width:60%;">
 <section id="fixed-effects-results" class="level3">
 <h3 class="anchored" data-anchor-id="fixed-effects-results">Fixed-Effects Results</h3>
-<div class="small-table">
+<div class="regression-table">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -506,15 +521,15 @@ Example Data Frame
 </table>
 </div>
 <div class="tiny">
-<p><span class="math inline">\(*\)</span> <span class="math inline">\(p &lt; .001\)</span>. Subreddit fixed effects included in all models.</p>
+<p>*All coefficients <span class="math inline">\(p &lt; .001\)</span>. Subreddit fixed effects included.</p>
 </div>
 </section>
-</div><div class="column" style="width:45%;">
+</div><div class="column" style="width:40%;">
 <section id="what-do-we-learn" class="level3">
 <h3 class="anchored" data-anchor-id="what-do-we-learn">What Do We Learn?</h3>
-<p><strong>Connectedness decreases with distance</strong></p>
-<p><strong>Conditional on distance, connectedness is stronger within states</strong></p>
-<p>Geographic distance and state boundaries can explain some of the variation in patterns of shared online participation</p>
+<p><strong>Connectedness decreases with distance.</strong></p>
+<p><strong>Connectedness is stronger within states, conditional on distance.</strong></p>
+<p>Geographic distance and state boundaries help explain variation in shared online participation.</p>
 </section>
 </div>
 </div>
@@ -530,7 +545,7 @@ Example Data Frame
 →
 </div>
 <div class="flow-step">
-<p><strong>Node2Vec</strong> <small>Learn a network embedding for each subreddit</small></p>
+<p><strong>Node2Vec</strong> <small>Learn a network embedding for each subreddit(<span class="citation" data-cites="grover2016node2vec">Grover and Leskovec (<a href="#ref-grover2016node2vec" role="doc-biblioref">2016</a>)</span>)</small></p>
 </div>
 <div class="flow-arrow">
 →
@@ -571,9 +586,34 @@ Example Data Frame
 <section id="thank-you" class="level2">
 <h2 class="anchored" data-anchor-id="thank-you">Thank you!</h2>
 </section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p><img src="data/img/m115-fiftyone-dendrogram-complete.png" class="img-fluid" width="1000"></p>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<section id="an-unexpected-cluster-revealed-a-data-quality-problem" class="level3">
+<h3 class="anchored" data-anchor-id="an-unexpected-cluster-revealed-a-data-quality-problem">An Unexpected Cluster Revealed a Data Quality Problem</h3>
+</section>
+<div class="columns">
+<div class="column" style="width:58%;">
+<section id="the-rjersey-investigation" class="level3">
+<h3 class="anchored" data-anchor-id="the-rjersey-investigation">The <code>r/jersey</code> investigation</h3>
+<p><strong>1. Notice:</strong> In the <strong>first clustering of all subreddits</strong>, at <strong>k = 2</strong>, <code>r/jersey</code> formed a cluster <strong>by itself</strong>.</p>
+<p><strong>2. Investigate:</strong> I examined the community identity rather than assuming the model was wrong.</p>
+<p><strong>3. Verify:</strong> <code>r/jersey</code> concerned <strong>Jersey, the island in the English Channel</strong>, not New Jersey or Jersey City.</p>
+<p><strong>4. Correct:</strong> I excluded the geographically mismatched subreddit from the U.S. analytical sample.</p>
+</section>
+</div><div class="column" style="width:42%;">
+<div class="method-note">
+<p><strong>Unsupervised EDA → anomaly → manual verification → dataset correction</strong></p>
+</div>
+<p>A name-based geographic match can be wrong. Clustering <strong>flagged</strong> the anomaly; inspecting the community <strong>confirmed</strong> the problem.</p>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>Data validation is iterative:</strong> An unexpected analytical result can reveal a data-quality issue that was not obvious during initial collection.</p>
+</div>
+</section>
+<section id="additional-examples" class="level2">
+<h2 class="anchored" data-anchor-id="additional-examples">Additional Examples</h2>
+<p><img src="data/img/m115-complete51-k9.png" class="img-fluid"></p>
 <p><img src="data/img/m115-newjersey-choropleth.png" class="img-fluid"></p>
 
 
@@ -583,6 +623,9 @@ Example Data Frame
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-baileySocialConnectednessMeasurement2018" class="csl-entry" role="listitem">
 Bailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. <span>“Social <span>Connectedness</span>: <span>Measurement</span>, <span>Determinants</span>, and <span>Effects</span>.”</span> <em>Journal of Economic Perspectives</em> 32 (3): 259–80. <a href="https://doi.org/10.1257/jep.32.3.259">https://doi.org/10.1257/jep.32.3.259</a>.
+</div>
+<div id="ref-grover2016node2vec" class="csl-entry" role="listitem">
+Grover, Aditya, and Jure Leskovec. 2016. <span>“Node2vec: Scalable Feature Learning for Networks.”</span> In <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 855–64.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

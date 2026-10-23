@@ -369,15 +369,29 @@ PCI_{ij} =
 <li>Can connectedness alone recover recognizable <strong>geographic regions</strong>?</li>
 </ul>
 </div><div class="column" style="width:42%;">
-<h3 id="research-inspiration">Research Inspiration</h3>
-<p>Bailey et al.&nbsp;(2018) used Facebook friendship networks to measure <strong>social connectedness between places</strong>, relating it to geographic distance and political boundaries<span class="citation" data-cites="baileySocialConnectednessMeasurement2018">(<a href="#/examples" role="doc-biblioref" onclick="">Bailey et al. 2018</a>)</span>.</p>
+<div title="Inspiration">
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Inspiration</strong></p>
+</div>
+<div class="callout-content">
+<p>Bailey et al.&nbsp;(2018) used Facebook friendship networks to measure <strong>social connectedness between places</strong>, relating it to geographic distance and political boundaries<span class="citation" data-cites="baileySocialConnectednessMeasurement2018">(<a href="#/additional-examples" role="doc-biblioref" onclick="">Bailey et al. 2018</a>)</span>.</p>
 <p>Their connectedness-based clustering further demonstrated how network relationships can reveal geographic regions.</p>
+</div>
+</div>
+</div>
+</div>
 </div></div>
 </section>
 <section id="does-connectedness-decline-with-geographic-distance" class="slide level2">
-<h2>Does Connectedness Decline With Geographic Distance?</h2>
+<h2><strong>Does Connectedness Decline With Geographic Distance?</strong></h2>
 <h3 id="pairwise-regression">Pairwise Regression</h3>
-<p>I modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.</p>
+<p>Modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.</p>
+<div class="regression-equation">
 <p><span class="math display">\[
 \log(N_{ij} + 0.5)
 =
@@ -389,10 +403,11 @@ PCI_{ij} =
 +
 \epsilon_{ij}
 \]</span></p>
+</div>
 <div class="columns">
-<div class="column" style="width:55%;">
+<div class="column" style="width:60%;">
 <h3 id="fixed-effects-results">Fixed-Effects Results</h3>
-<div class="small-table">
+<div class="regression-table">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -425,13 +440,13 @@ PCI_{ij} =
 </table>
 </div>
 <div class="tiny">
-<p><span class="math inline">\(*\)</span> <span class="math inline">\(p &lt; .001\)</span>. Subreddit fixed effects included in all models.</p>
+<p>*All coefficients <span class="math inline">\(p &lt; .001\)</span>. Subreddit fixed effects included.</p>
 </div>
-</div><div class="column" style="width:45%;">
+</div><div class="column" style="width:40%;">
 <h3 id="what-do-we-learn">What Do We Learn?</h3>
-<p><strong>Connectedness decreases with distance</strong></p>
-<p><strong>Conditional on distance, connectedness is stronger within states</strong></p>
-<p>Geographic distance and state boundaries can explain some of the variation in patterns of shared online participation</p>
+<p><strong>Connectedness decreases with distance.</strong></p>
+<p><strong>Connectedness is stronger within states, conditional on distance.</strong></p>
+<p>Geographic distance and state boundaries help explain variation in shared online participation.</p>
 </div></div>
 </section>
 <section id="can-connectedness-reconstruct-geographic-regions" class="slide level2">
@@ -445,7 +460,7 @@ PCI_{ij} =
 →
 </div>
 <div class="flow-step">
-<p><strong>Node2Vec</strong> <small>Learn a network embedding for each subreddit</small></p>
+<p><strong>Node2Vec</strong> <small>Learn a network embedding for each subreddit(<span class="citation" data-cites="grover2016node2vec">Grover and Leskovec (<a href="#/additional-examples" role="doc-biblioref" onclick="">2016</a>)</span>)</small></p>
 </div>
 <div class="flow-arrow">
 →
@@ -483,15 +498,38 @@ PCI_{ij} =
 <section id="thank-you" class="slide level2">
 <h2>Thank you!</h2>
 </section>
-<section id="examples" class="slide level2 smaller scrollable">
-<h2>Examples</h2>
-<p><img data-src="data/img/m115-fiftyone-dendrogram-complete.png" width="1000"></p>
+<section id="notes" class="slide level2">
+<h2>Notes</h2>
+<h3 id="an-unexpected-cluster-revealed-a-data-quality-problem">An Unexpected Cluster Revealed a Data Quality Problem</h3>
+<div class="columns">
+<div class="column" style="width:58%;">
+<h3 id="the-rjersey-investigation">The <code>r/jersey</code> investigation</h3>
+<p><strong>1. Notice:</strong> In the <strong>first clustering of all subreddits</strong>, at <strong>k = 2</strong>, <code>r/jersey</code> formed a cluster <strong>by itself</strong>.</p>
+<p><strong>2. Investigate:</strong> I examined the community identity rather than assuming the model was wrong.</p>
+<p><strong>3. Verify:</strong> <code>r/jersey</code> concerned <strong>Jersey, the island in the English Channel</strong>, not New Jersey or Jersey City.</p>
+<p><strong>4. Correct:</strong> I excluded the geographically mismatched subreddit from the U.S. analytical sample.</p>
+</div><div class="column" style="width:42%;">
+<div class="method-note">
+<p><strong>Unsupervised EDA → anomaly → manual verification → dataset correction</strong></p>
+</div>
+<p>A name-based geographic match can be wrong. Clustering <strong>flagged</strong> the anomaly; inspecting the community <strong>confirmed</strong> the problem.</p>
+</div></div>
+<div class="takeaway">
+<p><strong>Data validation is iterative:</strong> An unexpected analytical result can reveal a data-quality issue that was not obvious during initial collection.</p>
+</div>
+</section>
+<section id="additional-examples" class="slide level2 smaller scrollable">
+<h2>Additional Examples</h2>
+<p><img data-src="data/img/m115-complete51-k9.png"></p>
 <p><img data-src="data/img/m115-newjersey-choropleth.png"></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-baileySocialConnectednessMeasurement2018" class="csl-entry" role="listitem">
 Bailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong. 2018. <span>“Social <span>Connectedness</span>: <span>Measurement</span>, <span>Determinants</span>, and <span>Effects</span>.”</span> <em>Journal of Economic Perspectives</em> 32 (3): 259–80. <a href="https://doi.org/10.1257/jep.32.3.259">https://doi.org/10.1257/jep.32.3.259</a>.
+</div>
+<div id="ref-grover2016node2vec" class="csl-entry" role="listitem">
+Grover, Aditya, and Jure Leskovec. 2016. <span>“Node2vec: Scalable Feature Learning for Networks.”</span> In <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 855–64.
 </div>
 </div>
 </section>
@@ -676,9 +714,9 @@ Bailey, Michael, Rachel Cao, Theresa Kuchler, Johannes Stroebel, and Arlene Wong
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1080,
+        width: 1180,
 
-        height: 750,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

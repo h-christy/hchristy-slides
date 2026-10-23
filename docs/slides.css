@@ -609,3 +609,30 @@
       break-inside: avoid;
     }
   }
+
+
+  /* Larger regression equation */
+  .reveal .regression-equation {
+    font-size: 1.3em;
+    margin: 0.8em 0 1em 0;
+    text-align: center;
+  }
+
+  /* Larger regression results table */
+  .reveal .regression-table table {
+    font-size: 1.05em;
+    width: 100%;
+    margin: 0;
+  }
+
+  /* More space inside table cells */
+  .reveal .regression-table th,
+  .reveal .regression-table td {
+    padding: 0.35em 0.45em;
+    white-space: nowrap;
+  }
+
+  /* Keep explanatory note compact */
+  .reveal .regression-table + .tiny {
+    font-size: 0.6em;
+  }
