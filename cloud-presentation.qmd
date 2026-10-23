@@ -31,7 +31,7 @@ bibliography: ref.bib
 
 ::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 ### Data
 
@@ -42,7 +42,7 @@ bibliography: ref.bib
 - Data-intensive analysis with **PySpark + AWS**
 
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 
 ::: {.callout-note appearance="simple" collapse="true" title='What is a "location-based subreddit"?'}
 
@@ -257,10 +257,115 @@ $*$ $p < .001$. Subreddit fixed effects included in all models.
 
 **Conditional on distance, connectedness is stronger within states**
 
-Geographic distance and state boundaries can explain a part of the variations on patterns of shared online participation.
+Geographic distance and state boundaries can explain some of the variation in patterns of shared online participation
 
 :::
 
 :::
 
+## Can Connectedness Reconstruct Geographic Regions?
 
+Using the **network of shared
+Reddit participation itself** to test whether clustering yields geographically cohesive regions
+
+<div class="flow compact">
+
+<div class="flow-step">
+<strong>PCI Network</strong>
+<small>Size-adjusted shared-author connections</small>
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step">
+<strong>Node2Vec</strong>
+<small>Learn a network embedding for each subreddit(@grover2016node2vec)</small>
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step">
+<strong>Hierarchical Clustering</strong>
+<small>Complete linkage on subreddit embeddings</small>
+</div>
+
+<div class="flow-arrow">→</div>
+
+<div class="flow-step accent">
+<strong>Geographic Regions</strong>
+<small>Compare clusters with the U.S. map</small>
+</div>
+
+</div>
+
+::: {.columns}
+
+::: {.column width="72%"}
+
+![](data/img/m115-complete51-k5-slow.gif){fig-alt="Hierarchical clustering of U.S. state-level subreddits based on Node2Vec embeddings learned from PCI-weighted Reddit connectedness."}
+
+::: {.fragment}
+![](data/img/m115-complete51-k15-labeled.gif)
+:::
+:::
+
+::: {.column width="28%"}
+
+### Insights
+
+**Even without geographic information, the resulting clusters exhibit patterns of spatial contiguity**
+
+::: {.tiny}
+$k$ represents the number of clusters (groups) you choose to divide your observations into.
+:::
+
+::: {.method-note}
+**51 communities:** state-level subreddits for the 50 states + Washington, D.C.
+:::
+
+:::
+
+:::
+
+::: {.takeaway}
+**Online connectedness contains geographic structure:** 
+:::
+
+## Thank you!
+
+## Notes
+
+### An Unexpected Cluster Revealed a Data Quality Problem
+
+::: {.columns}
+::: {.column width="58%"}
+### The `r/jersey` investigation
+
+**1. Notice:** In the **first clustering of all subreddits**, at **k = 2**, `r/jersey` formed a cluster **by itself**.
+
+**2. Investigate:** I examined the community identity rather than assuming the model was wrong.
+
+**3. Verify:** `r/jersey` concerned **Jersey, the island in the English Channel**, not New Jersey or Jersey City.
+
+**4. Correct:** I excluded the geographically mismatched subreddit from the U.S. analytical sample.
+:::
+::: {.column width="42%"}
+
+::: {.method-note}
+**Unsupervised EDA → anomaly → manual verification → dataset correction**
+:::
+
+A name-based geographic match can be wrong. Clustering **flagged** the anomaly; inspecting the community **confirmed** the problem.
+
+:::
+:::
+
+::: {.takeaway}
+**Data validation is iterative:** An unexpected analytical result can reveal a data-quality issue that was not obvious during initial collection.
+:::
+
+## Additional Examples
+
+
+
+![](data/img/m115-newjersey-choropleth.png)

@@ -229,7 +229,7 @@ Christy Hsu
 <section id="to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity" class="slide level2">
 <h2>To What Extent Does Online Connectedness Between Places Reflect Geographic Proximity?</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <h3 id="data">Data</h3>
 <ul>
 <li><strong>611</strong> U.S. location-based subreddits</li>
@@ -238,7 +238,7 @@ Christy Hsu
 <li><strong>4.1M</strong> unique contributors</li>
 <li>Data-intensive analysis with <strong>PySpark + AWS</strong></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:60%;">
 <div title="What is a &quot;location-based subreddit&quot;?">
 <div class="callout callout-note callout-titled callout-style-simple">
 <div class="callout-body">
@@ -370,11 +370,11 @@ PCI_{ij} =
 </ul>
 </div><div class="column" style="width:42%;">
 <h3 id="research-inspiration">Research Inspiration</h3>
-<p>Bailey et al.&nbsp;(2018) used Facebook friendship networks to measure <strong>social connectedness between places</strong>, relating it to geographic distance and political boundaries<span class="citation" data-cites="baileySocialConnectednessMeasurement2018">(<a href="#/does-connectedness-decline-with-geographic-distance" role="doc-biblioref" onclick="">Bailey et al. 2018</a>)</span>.</p>
+<p>Bailey et al.&nbsp;(2018) used Facebook friendship networks to measure <strong>social connectedness between places</strong>, relating it to geographic distance and political boundaries<span class="citation" data-cites="baileySocialConnectednessMeasurement2018">(<a href="#/examples" role="doc-biblioref" onclick="">Bailey et al. 2018</a>)</span>.</p>
 <p>Their connectedness-based clustering further demonstrated how network relationships can reveal geographic regions.</p>
 </div></div>
 </section>
-<section id="does-connectedness-decline-with-geographic-distance" class="slide level2 smaller scrollable">
+<section id="does-connectedness-decline-with-geographic-distance" class="slide level2">
 <h2>Does Connectedness Decline With Geographic Distance?</h2>
 <h3 id="pairwise-regression">Pairwise Regression</h3>
 <p>I modeled the number of shared authors between each pair of location-based subreddits as a function of their geographic relationship.</p>
@@ -431,8 +431,62 @@ PCI_{ij} =
 <h3 id="what-do-we-learn">What Do We Learn?</h3>
 <p><strong>Connectedness decreases with distance</strong></p>
 <p><strong>Conditional on distance, connectedness is stronger within states</strong></p>
-<p>Geographic distance and state boundaries can explain a part of the variations on patterns of shared online participation.</p>
+<p>Geographic distance and state boundaries can explain some of the variation in patterns of shared online participation</p>
 </div></div>
+</section>
+<section id="can-connectedness-reconstruct-geographic-regions" class="slide level2">
+<h2>Can Connectedness Reconstruct Geographic Regions?</h2>
+<p>Using the <strong>network of shared Reddit participation itself</strong> to test whether clustering yields geographically cohesive regions</p>
+<div class="flow compact">
+<div class="flow-step">
+<p><strong>PCI Network</strong> <small>Size-adjusted shared-author connections</small></p>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step">
+<p><strong>Node2Vec</strong> <small>Learn a network embedding for each subreddit</small></p>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step">
+<p><strong>Hierarchical Clustering</strong> <small>Complete linkage on subreddit embeddings</small></p>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step accent">
+<p><strong>Geographic Regions</strong> <small>Compare clusters with the U.S. map</small></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:72%;">
+<p><img data-src="data/img/m115-complete51-k5-slow.gif" alt="Hierarchical clustering of U.S. state-level subreddits based on Node2Vec embeddings learned from PCI-weighted Reddit connectedness."></p>
+<div class="fragment">
+<p><img data-src="data/img/m115-complete51-k15-labeled.gif"></p>
+</div>
+</div><div class="column" style="width:28%;">
+<h3 id="insights">Insights</h3>
+<p><strong>Even without geographic information, the resulting clusters exhibit patterns of spatial contiguity</strong></p>
+<div class="tiny">
+<p><span class="math inline">\(k\)</span> represents the number of clusters (groups) you choose to divide your observations into.</p>
+</div>
+<div class="method-note">
+<p><strong>51 communities:</strong> state-level subreddits for the 50 states + Washington, D.C.</p>
+</div>
+</div></div>
+<div class="takeaway">
+<p><strong>Online connectedness contains geographic structure:</strong></p>
+</div>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+</section>
+<section id="examples" class="slide level2 smaller scrollable">
+<h2>Examples</h2>
+<p><img data-src="data/img/m115-fiftyone-dendrogram-complete.png" width="1000"></p>
+<p><img data-src="data/img/m115-newjersey-choropleth.png"></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

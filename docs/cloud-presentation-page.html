@@ -252,6 +252,9 @@ window.Quarto = {
   <li><a href="#from-reddit-activity-to-place-connectedness" id="toc-from-reddit-activity-to-place-connectedness" class="nav-link" data-scroll-target="#from-reddit-activity-to-place-connectedness">From Reddit Activity to Place Connectedness</a></li>
   <li><a href="#from-online-communities-to-relationships-between-places" id="toc-from-online-communities-to-relationships-between-places" class="nav-link" data-scroll-target="#from-online-communities-to-relationships-between-places">From Online Communities to Relationships Between Places</a></li>
   <li><a href="#does-connectedness-decline-with-geographic-distance" id="toc-does-connectedness-decline-with-geographic-distance" class="nav-link" data-scroll-target="#does-connectedness-decline-with-geographic-distance">Does Connectedness Decline With Geographic Distance?</a></li>
+  <li><a href="#can-connectedness-reconstruct-geographic-regions" id="toc-can-connectedness-reconstruct-geographic-regions" class="nav-link" data-scroll-target="#can-connectedness-reconstruct-geographic-regions">Can Connectedness Reconstruct Geographic Regions?</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you!</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cloud-presentation-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -287,7 +290,7 @@ window.Quarto = {
 <section id="to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity" class="level2">
 <h2 class="anchored" data-anchor-id="to-what-extent-does-online-connectedness-between-places-reflect-geographic-proximity">To What Extent Does Online Connectedness Between Places Reflect Geographic Proximity?</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
 <ul>
@@ -298,7 +301,7 @@ window.Quarto = {
 <li>Data-intensive analysis with <strong>PySpark + AWS</strong></li>
 </ul>
 </section>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:60%;">
 <div class="callout callout-style-simple callout-note callout-titled" title="What is a &quot;location-based subreddit&quot;?">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -511,10 +514,67 @@ Example Data Frame
 <h3 class="anchored" data-anchor-id="what-do-we-learn">What Do We Learn?</h3>
 <p><strong>Connectedness decreases with distance</strong></p>
 <p><strong>Conditional on distance, connectedness is stronger within states</strong></p>
-<p>Geographic distance and state boundaries can explain a part of the variations on patterns of shared online participation.</p>
+<p>Geographic distance and state boundaries can explain some of the variation in patterns of shared online participation</p>
 </section>
 </div>
 </div>
+</section>
+<section id="can-connectedness-reconstruct-geographic-regions" class="level2">
+<h2 class="anchored" data-anchor-id="can-connectedness-reconstruct-geographic-regions">Can Connectedness Reconstruct Geographic Regions?</h2>
+<p>Using the <strong>network of shared Reddit participation itself</strong> to test whether clustering yields geographically cohesive regions</p>
+<div class="flow compact">
+<div class="flow-step">
+<p><strong>PCI Network</strong> <small>Size-adjusted shared-author connections</small></p>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step">
+<p><strong>Node2Vec</strong> <small>Learn a network embedding for each subreddit</small></p>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step">
+<p><strong>Hierarchical Clustering</strong> <small>Complete linkage on subreddit embeddings</small></p>
+</div>
+<div class="flow-arrow">
+→
+</div>
+<div class="flow-step accent">
+<p><strong>Geographic Regions</strong> <small>Compare clusters with the U.S. map</small></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:72%;">
+<p><img src="data/img/m115-complete51-k5-slow.gif" class="img-fluid" alt="Hierarchical clustering of U.S. state-level subreddits based on Node2Vec embeddings learned from PCI-weighted Reddit connectedness."></p>
+<div class="fragment">
+<p><img src="data/img/m115-complete51-k15-labeled.gif" class="img-fluid"></p>
+</div>
+</div><div class="column" style="width:28%;">
+<section id="insights" class="level3">
+<h3 class="anchored" data-anchor-id="insights">Insights</h3>
+<p><strong>Even without geographic information, the resulting clusters exhibit patterns of spatial contiguity</strong></p>
+<div class="tiny">
+<p><span class="math inline">\(k\)</span> represents the number of clusters (groups) you choose to divide your observations into.</p>
+</div>
+<div class="method-note">
+<p><strong>51 communities:</strong> state-level subreddits for the 50 states + Washington, D.C.</p>
+</div>
+</section>
+</div>
+</div>
+<div class="takeaway">
+<p><strong>Online connectedness contains geographic structure:</strong></p>
+</div>
+</section>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank you!</h2>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p><img src="data/img/m115-fiftyone-dendrogram-complete.png" class="img-fluid" width="1000"></p>
+<p><img src="data/img/m115-newjersey-choropleth.png" class="img-fluid"></p>
 
 
 
