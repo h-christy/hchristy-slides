@@ -208,7 +208,7 @@ Their connectedness-based clustering further demonstrated how network relationsh
 :::
 
 
-## Geography Strongly Predicts Online Connectedness
+## Does Connectedness Decline With Geographic Distance?
 
 ### Pairwise Regression
 
